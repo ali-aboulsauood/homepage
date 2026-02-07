@@ -82,6 +82,21 @@
 
   --display-font: 'Playfair Display', var(--display-system-font-stack), var(--emoji-system-font-stack);
   --body-font: 'Roboto', var(--body-system-font-stack), var(--emoji-system-font-stack);
+
+  /* (2) Colors */
+  
+  --brand-color-primary: #0891b2;
+  --brand-color-secondary: #ffffff;
+
+  --text-color-display: #060b04;
+  --text-color-body: #575655;
+
+  --text-color-alternate: var(--brand-color-secondary);
+  
+  /* (3) Shadows */
+
+  --box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  --text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
 }
 
 /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
