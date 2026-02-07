@@ -1,0 +1,91 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'Roboto';
+
+  src:  local('Roboto Regular'), local('Roboto-Regular'),
+        url('assets/fonts/Roboto/subset-Roboto-Regular.woff2') format('woff2'),
+        url('assets/fonts/Roboto/subset-Roboto-Regular.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+
+  src:  local('Roboto Bold'), local('Roboto-Bold'),
+        url('assets/fonts/Roboto/subset-Roboto-Bold.woff2') format('woff2'),
+        url('assets/fonts/Roboto/subset-Roboto-Bold.woff') format('woff');
+
+  font-weight: bold;
+  font-style: normal;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+
+  src:  local('Roboto Italic'), local('Roboto-Italic'),
+        url('assets/fonts/Roboto/subset-Roboto-Italic.woff2') format('woff2'),
+        url('assets/fonts/Roboto/subset-Roboto-Italic.woff') format('woff');
+
+  font-weight: normal;
+  font-style: italic;
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src:  local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
+        url('assets/fonts/Roboto/subset-Roboto-BoldItalic.woff2') format('woff2'),
+        url('assets/fonts/Roboto/subset-Roboto-BoldItalic.woff') format('woff');
+  
+  font-weight: bold;
+  font-style: italic;
+  
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+
+  src: local('Playfair Display Regular'), local('PlayfairDisplay-Regular'),
+      url('assets/fonts/PlayfairDisplay/subset-PlayfairDisplay-Regular.woff2') format('woff2'),
+      url('assets/fonts/PlayfairDisplay/subset-PlayfairDisplay-Regular.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+
+  font-display: swap;
+}
+
+:root {
+  /* (1) Fonts */
+
+  /* (1 - A) System font stacks */
+
+  /* Didone system font stack — see notes at https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#didone */
+  --display-system-font-stack: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+
+  /* Neo-Grotesque system font stack — see notes at https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#neo-grotesque */
+  --body-system-font-stack: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+
+  /* Native emoji support system font stack — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#emoji-support */
+  --emoji-system-font-stack: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* (1 - B) Page fonts */
+
+  --display-font: 'Playfair Display', var(--display-system-font-stack), var(--emoji-system-font-stack);
+  --body-font: 'Roboto', var(--body-system-font-stack), var(--emoji-system-font-stack);
+}
+
+/* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
