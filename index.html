@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="styles.css">
   </head>
 
+  <!-- TODO: Check the accessibility of the tooltips created using the `title` attribute. -->
+
   <body>
     <!-- Inline SVGs -->
     <svg xmlns="http://www.w3.org/2000/svg" id="inline-svgs" hidden>
@@ -32,5 +34,315 @@
         </symbol>
       </defs>
     </svg>
+
+    <header>
+      <div class="author-name-and-photo">
+        <h1 id="author-name">
+          Ali Mohammed
+        </h1>
+
+        <!-- TODO: Implement the header image -->
+        <img  id="author-photo" src="assets/images/header-image.jpg" alt="Man using a laptop" 
+              srcset=""
+              sizes=""
+        >
+      </div>
+
+      <section id="about-me">
+        <h2 class="section-title">
+          About me
+        </h2>
+
+        <div class="section-body">
+          <p>
+            <!-- TODO: Replace the placeholder content. -->
+            Lorem ipsum dolor sit amet, 
+            consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+        </div>
+
+        <!-- TODO: Check if it is semantically appropriate to represent author links by the `address` element. -->
+        <footer class="section-footer">
+          <address class="author-links">
+            <a href="https://www.github.com/ali-aboulsauood" title="GitHub">
+              <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+            </a>
+
+            <a href="https://www.linkedin.com/in/ali-k-mohammed" title="LinkedIn">
+              <img src="assets/icons/linkedin-plain.svg" alt="LinkedIn" width="24px" height="24px" role="none">
+            </a>
+
+            <a href="https://www.x.com/AliKMohammed" title="X (formerly Twitter)">
+              <img src="assets/icons/twitter-original.svg" alt="X (formerly Twitter)" width="24px" height="24px" role="none"> 
+            </a>
+          </address>
+        </footer>
+      </section>
+    </header>
+
+    <main>
+      <section id="my-work">
+        <h2 class="section-title">
+          My work
+        </h2>
+
+        <div class="section-body">
+          <!-- TODO: Replace the placeholder content. -->
+          
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot"
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot" 
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot" 
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot" 
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot" 
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <img  class="project-image" src="assets/images/project-screenshots/project-screenshot-placeholder.png" alt="Project screenshot" 
+                  srcset=""
+                  sizes=""
+            >
+
+            <div class="project-details">
+              <header class="project-title-and-links">
+                <h3 class="project-title">
+                  Project name
+                </h3>
+
+                <div class="project-links">
+                  <a href="https://www.github.com/ali-aboulsauood/homepage" title="GitHub repository">
+                    <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+                  </a>
+
+                  <a href="https://ali-aboulsauood.github.io/homepage" target="_blank" rel="noopener noreferrer" title="GitHub live page (opens in a new tab)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" role="none">
+                      <use href="#open-in-new"></use>
+                    </svg>
+                  </a>
+                </div>
+              </header>
+
+              <div class="project-description">
+                <p>Short description of the project. Just a couple of sentences will do.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <section id="contact-me">
+        <h2 class="section-title">
+          Contact me
+        </h2>
+
+        <div class="section-body">
+          <p class="section-intro">
+            Please get in touch if you think our work could be mutually beneficial!
+          </p>
+
+          <!-- TODO: Replace the placeholder content. -->
+          <address class="author-contact-info">
+            <p class="author-address">
+              1234 Random Road
+
+              <br>
+
+              Random Town, California 12345
+            </p>
+
+            <div class="author-communication">
+              <a href="tel:+555-555-5555" title="Telephone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" role="none">
+                  <use href="#phone-outline"></use>
+                </svg>
+
+                555-555-5555
+              </a>
+
+              <a href="mailto:this.email.is.not.real@gmail.com" title="E-mail">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" role="none">
+                  <use href="#email-outline"></use>
+                </svg>
+
+                this.email.is.not.real@gmail.com
+              </a>
+            </div>
+
+            <div class="author-links">
+              <a href="https://www.github.com/ali-aboulsauood" title="GitHub">
+                <img src="assets/icons/github-original.svg" alt="GitHub" width="24px" height="24px" role="none">
+              </a>
+
+              <a href="https://www.linkedin.com/in/ali-k-mohammed" title="LinkedIn">
+                <img src="assets/icons/linkedin-plain.svg" alt="LinkedIn" width="24px" height="24px" role="none">
+              </a>
+
+              <a href="https://www.x.com/AliKMohammed" title="X (formerly Twitter)">
+                <img src="assets/icons/twitter-original.svg" alt="X (formerly Twitter)" width="24px" height="24px" role="none"> 
+              </a>
+            </div>
+          </address>
+
+          <picture>
+            <!-- TODO: Adjust media queries -->
+            <source srcset="assets/images/footer-image-desktop.jpg" media="(min-width: 1200px)">
+
+            <img src="assets/images/footer-image-mobile-tablet.jpg" alt="Man talking on a smartphone while using a laptop">
+          </picture>
+        </div>
+      </section>
+    </footer>
   </body>
 </html>
