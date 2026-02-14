@@ -430,12 +430,14 @@ body > * {
     --padding-top: 40px;
   }
 
-  #page-header {
+  #page-header, #page-header > * {
     display: block;
   }
 
   #author-name-and-photo {
     float: left;
+    margin-right: 16px;
+    margin-bottom: -4px;
 
     transform: scale(1.05);
     z-index: 1;
