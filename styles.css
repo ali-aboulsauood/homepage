@@ -411,7 +411,7 @@ body > * {
 }
 
 #author-photo {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 10 / 11;
 
   width: 100%;
   height: 100%;
@@ -469,7 +469,6 @@ body > * {
     margin-right: calc(16px * var(--author-name-photo-scale) + 0.75ch);
     margin-bottom: 16px;
 
-    aspect-ratio: 10 / 11;
     transform: scale(var(--author-name-photo-scale));
   }
 
