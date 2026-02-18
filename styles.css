@@ -502,6 +502,47 @@ body > * {
   }
 }
 
+/* (C) Main styles */
+
+/* TODO: Find a way to occupy the empty grid cells. */
+
+#my-work > .section-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(394px, 1fr));
+
+  gap: 56px 48px;
+}
+
+.project-image {
+  /* At some viewport widths the width of the project details part is greater than the width of the image, leaving a white space on the right side of the image. */
+  width: 100%;
+}
+
+.project-details {
+  padding: 20px 28px 84px 32px;
+}
+
+.project-title-and-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.project-links {
+  display: grid;
+  grid-auto-flow: column;
+
+  place-items: center;
+
+  column-gap: 12px;
+
+  transform: scale(1.1);
+
+  color: var(--text-color-display);
+}
+
 @media (width < 600px) {
   .section-title {
     text-align: center;
