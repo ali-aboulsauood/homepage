@@ -506,6 +506,10 @@ body > * {
 
 /* TODO: Find a way to occupy the empty grid cells. */
 
+#page-main {
+  margin-bottom: 64px;
+}
+
 #my-work > .section-body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(394px, 1fr));
