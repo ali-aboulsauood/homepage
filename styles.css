@@ -239,6 +239,19 @@ img, canvas, picture, svg, video {
   max-width: 100%;
 }
 
+picture {
+  /*
+    `display: contents` prevents the element from rendering its own box.
+    This effectively makes the direct children of the said element behave as direct children of the element's parent (their "grandparent") in the CSS, without removing the element from the markup.
+    
+    A bug in some of the older versions of the major browsers causes the removal of the element from the accessibility tree.
+  */
+
+  display: contents;
+
+  /* TODO: Address any accessibility issues caused by `display: contents;` */
+}
+
 button, input, select, textarea {
   font: inherit;
 }
@@ -267,32 +280,28 @@ section > * {
 
 .author-links {
   display: flex;
-
   align-items: center;
 
-  column-gap: 16px;
-
   margin-top: calc(0.4 * var(--section-row-gap));
+
+  gap: calc(var(--author-link-width) / 1.5);
+}
+
+.author-links img {
+  width: var(--author-link-width);
+  height: var(--author-link-width);
 }
 
 #page-header .author-links {
   justify-content: end;
 
-  column-gap: 36px;
-}
-
-#page-header .author-links > * {
-  transform: scale(1.5);
+  --author-link-width: 36px;
 }
 
 #page-footer .author-links {
   justify-content: start;
 
-  column-gap: 108px;
-}
-
-#page-footer .author-links > * {
-  transform: scale(3);
+  --author-link-width: 54px;
 }
 
 /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
@@ -336,7 +345,7 @@ body {
 }
 
 body > * {
-  --padding-top: 64px;
+  --padding-top: 80px;
 
   --padding-left: calc(1.5 * var(--padding-top));
   --padding-right: calc(0.95 * var(--padding-left));
@@ -438,6 +447,105 @@ body > * {
   margin-top: 54px;
 }
 
+/* (C) Main styles */
+
+/* TODO: Find a way to occupy the empty grid cells. */
+
+#page-main {
+  margin-bottom: 64px;
+}
+
+#my-work > .section-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(394px, 1fr));
+
+  gap: 56px 48px;
+}
+
+.project-image {
+  /* At some viewport widths the width of the project details part is greater than the width of the image, leaving a white space on the right side of the image. */
+  width: 100%;
+}
+
+.project-details {
+  padding: 20px 28px 84px 32px;
+}
+
+.project-title-and-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 16px;
+}
+
+.project-links {
+  display: grid;
+  grid-auto-flow: column;
+
+  place-items: center;
+
+  column-gap: 12px;
+
+  transform: scale(1.1);
+
+  color: var(--text-color-display);
+}
+
+/* (C) Footer styles */
+
+#contact-me {
+  flex-flow: row wrap;
+
+  /* Required to prevent section text and image from being too close at narrower viewport widths. */
+  gap: 64px;
+}
+
+#contact-me .section-text {
+  flex: 0.4 1 0;
+}
+
+#contact-me .section-image {
+  flex: 0.6 0 0;
+
+  align-self: stretch;
+}
+
+#author-footer-photo {
+  min-height: 100%;
+
+  object-fit: cover;
+}
+
+#contact-me .section-body-text {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: 50px;
+}
+
+#contact-me .author-contact-info {
+  /* CSS Subgrid is a Baseline: Newly Available feature, so `display: contents;` is preferred. */
+  display: contents;
+}
+
+.author-communication > * {
+  display: flex;
+  align-items: center;
+
+  column-gap: 16px;
+}
+
+.author-communication > * > svg {
+  --author-communication-icon-width: 44px;
+
+  flex-basis: var(--author-communication-icon-width);
+
+  /* Prevents shrinking of the email icon to zero width. */
+  min-width: var(--author-communication-icon-width);
+  height: var(--author-communication-icon-width);
+}
+
 /* Tablet styles */
 @media (600px <= width < 1200px) {
   body > * {
@@ -502,51 +610,6 @@ body > * {
   }
 }
 
-/* (C) Main styles */
-
-/* TODO: Find a way to occupy the empty grid cells. */
-
-#page-main {
-  margin-bottom: 64px;
-}
-
-#my-work > .section-body {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(394px, 1fr));
-
-  gap: 56px 48px;
-}
-
-.project-image {
-  /* At some viewport widths the width of the project details part is greater than the width of the image, leaving a white space on the right side of the image. */
-  width: 100%;
-}
-
-.project-details {
-  padding: 20px 28px 84px 32px;
-}
-
-.project-title-and-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 16px;
-}
-
-.project-links {
-  display: grid;
-  grid-auto-flow: column;
-
-  place-items: center;
-
-  column-gap: 12px;
-
-  transform: scale(1.1);
-
-  color: var(--text-color-display);
-}
-
 @media (width < 600px) {
   .section-title {
     text-align: center;
@@ -554,31 +617,24 @@ body > * {
     margin-bottom: calc(var(--section-title-margin-bottom / 2));
   }
 
-  #page-header .author-links {
-    column-gap: 16px;
-  }
-
-  #page-header .author-links > * {
-    transform: scale(1);
-  }
-
   #page-header .author-links, #page-footer .author-links {
     justify-content: center;
-  }
-
-  #page-footer .author-links {
-    column-gap: 48px;
-  }
-
-  #page-footer .author-links > * {
-    transform: scale(1.5);
   }
 
   body {
     row-gap: 64px;
   }
 
-  body > * {
+  #page-footer {
+    padding: 0;
+    padding-top: 12px;
+  }
+
+  #contact-me {
+    padding-bottom: 0;
+  }
+
+  #page-header, #page-main, #page-footer > #contact-me > #section-text {
     padding: 12px 16px;
   }
 
@@ -625,5 +681,13 @@ body > * {
 
   #about-me .section-footer {
     margin-top: 16px;
+  }
+
+  #contact-me .section-image {
+    min-width: 100%;
+  }
+
+  .author-communication > * > svg {
+    --author-communication-icon-width: 32px;
   }
 }
