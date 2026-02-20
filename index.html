@@ -13,6 +13,13 @@
     <link rel="preload" as="font" href="assets/fonts/Roboto/subset-Roboto-Regular.woff2" crossorigin>
 
     <link rel="stylesheet" href="styles.css">
+
+    <!-- 
+    Minified version of Fit-Text, used to fit the author name to the containing image in desktop and mobile layouts.
+
+    Refer to: https://fit-text.github.io/
+    -->
+    <script src="https://fit-text.github.io/element.min.js"></script>
   </head>
 
   <!-- TODO: Check the accessibility of the tooltips created using the `title` attribute. -->
@@ -40,9 +47,14 @@
 
     <header id="page-header">
       <div id="author-name-and-photo">
-        <h1 id="author-name">
-          Ali Mohammed
-        </h1>
+          <h1 id="author-name">
+            <!-- See the script element above. -->
+            <fit-text>
+              <div class="fit-text-wrapper">
+                <span id="author-first-name">Ali</span> <span id="author-last-name">Mohammed</span>
+              </div>
+            </fit-text>
+          </h1>
 
         <img  id="author-photo"
               sizes="(max-width: 1060px) 100vw, 1060px"

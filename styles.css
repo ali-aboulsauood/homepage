@@ -1,15 +1,5 @@
 /* NOTE: Features tagged as Newly available or Limited availability in Baseline are indicated. Find all instances of "Baseline" in your text editor to see them. */
 
-/*
-TODO: Use a more dynamic way to fit the author name to the author name and photo container.
-
-Resources
----------
-
-https://css-tricks.com/fitting-text-to-a-container/
-https://css-tricks.com/setting-line-length-in-css-and-fitting-text-to-a-container/
-*/
-
 /* Fonts */
 
 /* Playfair Display Regular */
@@ -411,12 +401,11 @@ body > * {
   color: var(--brand-color-secondary);
 
   text-align: center;
+  padding: 0 0.5ch;
 
   /* Baseline: Limited availability */
   -webkit-user-select: none;
   user-select: none;
-
-  font-size: 13cqw;
 }
 
 #author-photo {
@@ -590,7 +579,14 @@ body > * {
     width: max-content;
     height: max(min-content, var(--about-me-margin-top));
 
+    padding: 0;
+
     font-size: 2.5em;
+  }
+
+  #author-name > fit-text {
+    /* Override the inline font size rule added by FitText, as it is not needed in the tablet layout. */
+    font-size: inherit !important;
   }
 
   #about-me {
@@ -662,13 +658,14 @@ body > * {
   }
 
   #author-name {
-    /* TODO: Find a way to make the author name centered within the author name and photo container. */
-
-    width: 100%;
-
     text-align: start;
 
-    font-size: 2.85em;
+    width: 100%;
+  }
+
+  #author-name .fit-text-wrapper {
+    display: flex;
+    flex-direction: column;
   }
 
   #about-me {
