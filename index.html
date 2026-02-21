@@ -407,5 +407,48 @@
         </figure>
       </section>
     </footer>
+
+    <!-- applies a random color to each project image placeholder from the colors used for project image placeholders in the three design files. -->
+    <script>
+      const projectImagePlaceholders = document.querySelectorAll('div.project-image');
+
+      // The following colors have been picked from the three design files
+      const allColors = [ 
+        '#9e1c1c',
+        '#7c75ca',
+        '#5e8f4d',
+        '#c363b4',
+        '#d88f39',
+        '#4ba2d2',
+        '#ca7599',
+        '#4692d9',
+      ];
+      let unusedColors = [...allColors];
+
+      let lastUsedColorName = null;
+
+      const getRandomColor = () => {
+        const randomColorIndex = Math.floor(Math.random() * unusedColors.length);
+        const randomColor = unusedColors[randomColorIndex];
+
+        return Object.freeze({ colorName: randomColor, colorIndex: randomColorIndex });
+      };
+
+      projectImagePlaceholders.forEach(placeholder => {
+        let usedColor = null;
+
+        do {
+          if (unusedColors.length === 0)
+            unusedColors = [...allColors];
+
+          usedColor = getRandomColor();
+        } while (usedColor.colorName === lastUsedColorName);
+
+        unusedColors.splice(usedColor.colorIndex, 1)
+
+        placeholder.style.backgroundColor = usedColor.colorName;
+        lastUsedColorName = usedColor.colorName;
+      });
+    </script>
   </body>
 </html>
