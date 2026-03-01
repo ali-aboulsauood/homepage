@@ -383,6 +383,8 @@ body > * {
 
   transform-origin: bottom left;
   transform: skewY(-15deg);
+
+  box-shadow: var(--box-shadow);
 }
 
 #author-name-and-photo {
