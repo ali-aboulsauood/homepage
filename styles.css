@@ -638,6 +638,12 @@ div.project-image {
   }
 }
 
+@media (600px <= width <= 654px) {
+  #author-name {
+    font-size: 2.1em;
+  }
+}
+
 @media (width < 600px) {
   .section-title {
     text-align: center;
