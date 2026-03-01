@@ -112,9 +112,6 @@
 
   /* `word-wrap` has wider browser support than its newer synonym `overflow-wrap` */
   word-wrap: break-word;
-
-  /* Baseline 2023: Newly available */
-  hyphens: auto;
 }
 
 *, *::before, *::after {
@@ -134,18 +131,19 @@
   color: var(--brand-color-secondary)
 }
 
-.inverted-color-scheme::selection {
+.inverted-color-scheme *::selection {
   background-color: var(--brand-color-secondary);
   color: var(--brand-color-primary);
 }
 
 /* Since all `img` and `svg` elements are not rendered in inline layout (see below), they are not underlined along with link text. */
 
-a:not(:is(.icon, .icon-with-text)) {
-  text-decoration: underline solid;
-  color: var(--brand-color-primary);
+a {
+  text-decoration: none;
+}
 
-  font-weight: bold;
+a:not(:is(.icon, .icon-with-text)) {
+  color: var(--brand-color-primary);
 }
 
 a.icon, a.icon-with-text {
@@ -154,8 +152,8 @@ a.icon, a.icon-with-text {
   text-decoration: none;
 }
 
-a:not(:is(.icon, .icon-with-text)):hover, a:not(:is(.icon, .icon-with-text)):focus-visible {
-  text-decoration: underline dotted;
+a:hover, a:not(:is(.icon, .icon-with-text)):focus-visible {
+  text-decoration: underline solid;
 }
 
 a.icon:focus-visible, a.icon-with-text:focus-visible {
@@ -168,8 +166,18 @@ a.icon:focus-visible, a.icon-with-text:focus-visible {
   outline-color: var(--brand-color-secondary);
 }
 
-a.icon-with-text:hover, a.icon-with-text:focus-visible {
-  text-decoration: underline solid;
+a[target="_blank"] {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.35ch;
+}
+
+a[target="_blank"] svg {
+  width: max(1.15vw, 18px);
+
+  margin-top: 0.05ch;
 }
 
 address {
@@ -318,7 +326,7 @@ body {
   height: 100vh;
 
   font-family: var(--body-font);
-  font-size: clamp(1rem, calc(0.45rem + 1vw), 1.75rem);
+  font-size: clamp(1rem, calc(0.15rem + 1vw), 1.75rem);
 
   background-color: var(--brand-color-secondary);
   color: var(--text-color-body);
@@ -435,6 +443,10 @@ body > * {
   padding-right: calc(2 * var(--about-me-padding-left));
 
   width: calc(100% - var(--author-name-and-photo-width));
+}
+
+#about-me p:not(p:last-child) {
+  margin-bottom: 0.5em;
 }
 
 #about-me .section-footer {
