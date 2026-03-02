@@ -180,6 +180,24 @@ a[target="_blank"] svg {
   margin-top: 0.05ch;
 }
 
+.link-button {
+  appearance: none;
+
+  border: none;
+  padding: 0;
+
+  background-color: transparent;
+  color: var(--brand-color-primary);
+
+  text-decoration: underline solid;
+
+  cursor: pointer;
+}
+
+.link-button:hover, .link-button:focus-visible {
+  text-decoration: none;
+}
+
 address {
   /* The default value of `font-style` for `address` elements is `italic` */
   font-style: normal;
@@ -257,6 +275,24 @@ button, input, select, textarea {
   font: inherit;
 }
 
+select {
+  background-color: var(--brand-color-secondary);
+  color: var(--brand-color-primary);
+
+  border: none;
+
+  cursor: pointer;
+}
+
+select:hover, select:focus-visible {
+  outline: 2px solid var(--brand-color-primary);
+}
+
+option {
+  background-color: var(--brand-color-secondary);
+  color: var(--text-color-display);
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -267,6 +303,8 @@ section {
   background-color: var(--brand-color-secondary);
 
   padding-bottom: 16px;
+
+  --section-title-margin-bottom: 16px;
 }
 
 section > * {
@@ -274,8 +312,6 @@ section > * {
 }
 
 .section-title {
-  --section-title-margin-bottom: 16px;
-
   margin-bottom: var(--section-title-margin-bottom);
 }
 
@@ -303,6 +339,10 @@ section > * {
   justify-content: start;
 
   --author-link-width: 54px;
+}
+
+.no-italics {
+  font-style: normal;
 }
 
 /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
@@ -468,9 +508,16 @@ body > * {
   gap: 56px 48px;
 }
 
+#project-sort-note {
+  --project-sort-note-padding: 0.75em;
+
+  padding-top: calc(var(--project-sort-note-padding) - var(--section-title-margin-bottom));
+  padding-bottom: var(--project-sort-note-padding);
+}
+
 .project-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1.3fr 1fr;
 }
 
 .project-image {
@@ -488,7 +535,7 @@ div.project-image {
   text-align: center;
   align-content: center;
 
-  padding: 96px;
+  padding: 20%;
 }
 
 .project-image-text .fit-text-wrapper {
@@ -525,6 +572,11 @@ div.project-image {
   transform: scale(1.1);
 
   color: var(--text-color-display);
+}
+
+.project-description {
+  display: grid;
+  row-gap: 0.5em;
 }
 
 /* (C) Footer styles */
