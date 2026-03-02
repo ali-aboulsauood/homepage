@@ -98,8 +98,7 @@
   --box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   --text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
 
-  /* The default value of the `rem` unit (16px) is smaller than what is comfortable to read. */
-  font-size: 22px;
+  font-size: 16px;
 }
 
 /* (A) General styles */
