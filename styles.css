@@ -95,10 +95,11 @@
   
   /* (3) Shadows */
 
-  --box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-  --text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.75);
+  --box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+  --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.75);
 
-  font-size: 16px;
+  /* Makes the value of `1rem` equal to `10px`, without overriding the user's preferred base font size. */
+  font-size: 62.5%;
 }
 
 /* (A) General styles */
@@ -106,7 +107,7 @@
 /* NOTE: Some of the following style rules and rulesets are based on Josh W. Comeau's custom CSS reset — refer to https://www.joshwcomeau.com/css/custom-css-reset */
 
 * {
-  /* TODO: Use a suitable value for `line-height` for headings */
+  /* TODO: Use a suitable value for `line-height` for headings. */
   line-height: 1.5;
 
   /* `word-wrap` has wider browser support than its newer synonym `overflow-wrap` */
@@ -146,19 +147,19 @@ a:not(:is(.icon, .icon-with-text)) {
 }
 
 a.icon, a.icon-with-text {
+  text-decoration: none;  
   color: inherit;
-
-  text-decoration: none;
 }
 
 a:hover, a:not(:is(.icon, .icon-with-text)):focus-visible {
-  text-decoration: underline solid;
+  text-decoration: underline;
 }
 
 a.icon:focus-visible, a.icon-with-text:focus-visible {
-  outline: 2px solid var(--brand-color-primary);
+  /* TODO: Test whether using `rem` is more suitable than using `px` for this ruleset. */
 
-  outline-offset: 2px;
+  outline: 0.2rem solid var(--brand-color-primary);
+  outline-offset: 0.2rem;
 }
 
 .inverted-color-scheme a.icon:focus-visible, .inverted-color-scheme a.icon-with-text:focus-visible {
@@ -170,13 +171,12 @@ a[target="_blank"] {
   justify-content: center;
   align-items: center;
 
-  gap: 0.35ch;
+  gap: 0.25ch;
 }
 
-a[target="_blank"] svg {
-  width: max(1.15vw, 18px);
-
-  margin-top: 0.05ch;
+a[target="_blank"] svg[aria-label="opens in a new tab"] {
+  /* An SVG with a width of `1em` looks appropriately sized relative to the link text at any given viewport width. */
+  width: 1em;
 }
 
 .link-button {
@@ -185,10 +185,10 @@ a[target="_blank"] svg {
   border: none;
   padding: 0;
 
+  text-decoration: underline;
+
   background-color: transparent;
   color: var(--brand-color-primary);
-
-  text-decoration: underline solid;
 
   cursor: pointer;
 }
@@ -201,15 +201,30 @@ a[target="_blank"] svg {
   text-decoration: underline;
 }
 
+abbr {
+  text-decoration: none;
+  font-variant: normal;
+}
+
 address {
-  /* The default value of `font-style` for `address` elements is `italic` */
+  /* Overrides the default value of `font-style` for `address` elements, that is, `italic` */
   font-style: normal;
+}
+
+b {
+  font-weight: bold;
+}
+
+b.colored {
+  color: var(--brand-color-primary);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--display-font);
   color: var(--text-color-display);
 }
+
+/* Typographic scale uses the `em` unit to ensure that the various typographic elements scale with the fluid body */
 
 h1 {
   font-size: 2.5em;
@@ -220,26 +235,29 @@ h2 {
 }
 
 h3 {
-  font-size: 1.125em;
+  font-size: 1.15em;
 }
 
 /* TODO: Define `font-size` value for `h4`, `h5` and `h6` elements. */
 
-/* `max-inline-size` is used here to control the line lengths of paragraphs */
+/* `max-inline-size` is used here to control the maximum line lengths of paragraphs */
 
 p {
   font-family: var(--body-font);
   color: var(--text-color-body);
 
+  /* TODO: Change the value of this property to `60ch` if this can be accomplished with the same padding as in the design file. */
   max-inline-size: 75ch;
 }
 
-#page-main p {
-  font-size: 0.85em;
+article p {
+  max-inline-size: 40ch;
+
+  font-size: 0.9em;
 }
 
-p.project-description {
-  max-inline-size: 40ch;
+#page-main > p {
+  font-size: 1em;
 }
 
 /* `@supports` at-rule used to prevent Microsoft Edge DevTools extension for Visual Studio Code from giving warnings (LOL) */
@@ -263,10 +281,10 @@ img, canvas, picture, svg, video {
 
 picture {
   /*
-    `display: contents` prevents the element from rendering its own box.
-    This effectively makes the direct children of the said element behave as direct children of the element's parent (their "grandparent") in the CSS, without removing the element from the markup.
-    
-    A bug in some of the older versions of the major browsers causes the removal of the element from the accessibility tree.
+  `display: contents` prevents the element from rendering its own box.
+  This effectively makes the direct children of the said element behave as direct children of the element's parent (their "grandparent") in the CSS, without removing the element from the markup.
+  
+  A bug in some of the older versions of the major browsers causes the removal of the element from the accessibility tree.
   */
 
   display: contents;
@@ -276,24 +294,6 @@ picture {
 
 button, input, select, textarea {
   font: inherit;
-}
-
-select {
-  background-color: var(--brand-color-secondary);
-  color: var(--brand-color-primary);
-
-  border: none;
-
-  cursor: pointer;
-}
-
-select:hover, select:focus-visible {
-  outline: 2px solid var(--brand-color-primary);
-}
-
-option {
-  background-color: var(--brand-color-secondary);
-  color: var(--text-color-display);
 }
 
 section {
@@ -307,7 +307,7 @@ section {
 
   padding-bottom: 16px;
 
-  --section-title-margin-bottom: 16px;
+  --section-title-margin-bottom: 1.6rem;
 }
 
 section > * {
@@ -327,6 +327,8 @@ section > * {
   gap: calc(var(--author-link-width) / 1.5);
 }
 
+/* TODO: Make author links scale with the viewport or the font size of the parent. */
+
 .author-links img {
   width: var(--author-link-width);
   height: var(--author-link-width);
@@ -335,13 +337,13 @@ section > * {
 #page-header .author-links {
   justify-content: end;
 
-  --author-link-width: 36px;
+  --author-link-width: 1.6em;
 }
 
 #page-footer .author-links {
   justify-content: start;
 
-  --author-link-width: 54px;
+  --author-link-width: 2.2em;
 }
 
 .no-italics {
@@ -369,7 +371,9 @@ body {
   height: 100vh;
 
   font-family: var(--body-font);
-  font-size: clamp(1rem, calc(0.15rem + 1vw), 1.75rem);
+
+  /* Refer to: https://web.dev/learn/design/typography#clamping_text */
+  font-size: clamp(1.6rem, calc(0.85rem + 1.5vw), 2.25rem);
 
   background-color: var(--brand-color-secondary);
   color: var(--text-color-body);
@@ -380,7 +384,7 @@ body {
   color: var(--brand-color-secondary);
 }
 
-#author-name-and-photo, #about-me, .project-card {
+#author-name-and-photo, #page-header::before, #about-me, .project-card {
   box-shadow: var(--box-shadow);
 }
 
@@ -388,31 +392,25 @@ body {
   text-shadow: var(--text-shadow);
 }
 
+/* Horizontal padding, border, and margin values are defined in percentages, ensuring that widths do not exceed the viewport width. */
+
 body > * {
-  --padding-top: 80px;
+  --padding-left-right: 6.25%;
 
-  --padding-left: calc(1.5 * var(--padding-top));
-  --padding-right: calc(0.95 * var(--padding-left));
+  /* In the design file the right padding is smaller than the left (except in the mobile layout), but this is ignored here. */
+  padding: 64px var(--padding-left-right);
 
-  padding-top: var(--padding-top);
-  padding-bottom: calc(0.85 * var(--padding-top));
-
-  padding-left: var(--padding-left);
-  padding-right: calc(0.95 * var(--padding-left));
+  max-width: 100%;
 }
 
 /* (B) Header styles */
 
 #page-header {
   display: flex;
-
   justify-content: center;
   align-items: center;
 
-  /* TODO: Adjust the width and height across all viewport widths (from 320px to 1920px). */
-
-  /* Defined here instead of under `#author-name-and-photo` to make it visible to all children of `#page-header` */
-  --author-name-and-photo-width: clamp(250px, 35vw, 530px);
+  --author-name-and-photo-width: clamp(25rem, 35vw, 53rem);
 
   position: relative;
   isolation: isolate;
@@ -434,17 +432,15 @@ body > * {
 
   transform-origin: bottom left;
   transform: skewY(-15deg);
-
-  box-shadow: var(--box-shadow);
 }
 
 #author-name-and-photo {
+  container: author-name-and-photo / inline-size;
+
   position: relative;
   isolation: isolate;
 
   width: var(--author-name-and-photo-width);
-
-  container: author-name-and-photo / inline-size;
 }
 
 #author-name {
@@ -457,11 +453,13 @@ body > * {
   color: var(--brand-color-secondary);
 
   text-align: center;
+
+  /* TODO: Reduce the left and right padding of the author name in the mobile layout. */
   padding: 0 0.5ch;
 
-  /* Baseline: Limited availability
-  -webkit-user-select: none;
-  user-select: none; */
+  /* Baseline: Limited availability */
+  -webkit-user-select: all;
+  user-select: all;
 }
 
 #author-photo {
@@ -473,21 +471,25 @@ body > * {
   object-fit: cover;
 }
 
-/* TODO: Prevent the about me section from having a greater height than the header image. */
+/* TODO: Prevent the "about me" section from having a greater height than the header image. */
 
 #about-me {
   --about-me-padding-top: 56px;
-  --about-me-padding-left: 27px;
+
+  /* Multiplying a unitless value by a percentage resolves to a percentage value, which is then computed to the corresponding pixel value. */
+  --about-me-padding-left: 2%;
+  --about-me-padding-right: calc(1.25 * var(--about-me-padding-left));
 
   padding-top: var(--about-me-padding-top);
   padding-bottom: calc(0.5 * var(--about-me-padding-top));
 
   padding-left: var(--about-me-padding-left);
-  padding-right: calc(2 * var(--about-me-padding-left));
+  padding-right: var(--about-me-padding-right);
 
   width: calc(100% - var(--author-name-and-photo-width));
 }
 
+/* Setting `display` for `#about-me > .section-body` to `flex` or `grid` prevents text wrapping around the author image in the tablet layout. */
 #about-me p:not(p:last-child) {
   margin-bottom: 0.5em;
 }
@@ -498,21 +500,21 @@ body > * {
 
 /* (C) Main styles */
 
-/* TODO: Find a way to occupy the empty grid cells. */
-
 #page-main {
   margin-bottom: 64px;
 }
 
 #my-work > .section-body {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(394px, 1fr));
 
-  gap: 56px 48px;
+  /* Prevent using the desired minimum width (`39.5rem`) if it exceeds the width of the container. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 39.5rem), 1fr));
+
+  gap: 5.6rem 4.8rem;
 }
 
 #project-sort-note {
-  --project-sort-note-padding: 0.75em;
+  --project-sort-note-padding: 1em;
 
   padding-top: calc(var(--project-sort-note-padding) - var(--section-title-margin-bottom));
   padding-bottom: var(--project-sort-note-padding);
@@ -520,21 +522,23 @@ body > * {
 
 .project-card {
   display: grid;
-  grid-template-rows: 1.3fr 1fr;
+  grid-template-rows: auto 1fr;
 }
 
 .project-image {
-  /* At some viewport widths the width of the project details part is greater than the width of the image, leaving a white space on the right side of the image. */
+  /* At some viewport widths the width of the project details container is greater than the width of the image, leaving a white space on the right side of the image. */
   width: 100%;
   height: 100%;
 }
 
 div.project-image {
+  /* Fallback background color in case loading of the script for assigning random colors fails or is delayed. */
   background-color: var(--brand-color-primary);
   color: var(--brand-color-secondary);
 
   font-family: var(--display-font);
 
+  /* Setting `display` to `flex` or `grid` caus */
   text-align: center;
   align-content: center;
 
@@ -544,16 +548,14 @@ div.project-image {
 .project-image-text .fit-text-wrapper {
   display: flex;
   flex-direction: column;
-}
 
-.project-image-text .fit-text-wrapper > * {
   /* Baseline: Limited Availability */
   -webkit-user-select: none;
   user-select: none;
 }
 
 .project-details {
-  padding: 20px 28px 84px 32px;
+  padding: 20px 5% 84px 6%;
 }
 
 .project-title-and-links {
@@ -570,11 +572,15 @@ div.project-image {
 
   place-items: center;
 
-  column-gap: 12px;
-
-  transform: scale(1.1);
+  column-gap: 1.5rem;
 
   color: var(--text-color-display);
+}
+
+.project-links > * > * {
+  aspect-ratio: 1 / 1;
+  width: 1.25em;
+  height: auto;
 }
 
 .project-description {
@@ -588,7 +594,7 @@ div.project-image {
   flex-flow: row wrap;
 
   /* Required to prevent section text and image from being too close at narrower viewport widths. */
-  gap: 64px;
+  gap: 6.4rem;
 }
 
 #contact-me .section-text {
@@ -623,25 +629,30 @@ div.project-image {
   display: flex;
   align-items: center;
 
-  column-gap: 16px;
+  column-gap: 1.6rem;
 }
 
 .author-communication > * > svg {
-  --author-communication-icon-width: 44px;
+  --author-communication-icon-width: min(54px, 4.4rem);
 
   flex-basis: var(--author-communication-icon-width);
 
   /* Prevents shrinking of the email icon to zero width. */
   min-width: var(--author-communication-icon-width);
+  
   height: var(--author-communication-icon-width);
 }
 
 /* Tablet styles */
 @media (600px <= width < 1200px) {
   body > * {
-    --padding-top: 40px;
+    --padding-left-right: 11%;
 
-    /* The left and right paddings have not been increased, so as to maintain enough width for the "about me" section, preventing its title from breaking. */
+    padding: 40px 0;
+    padding-left: calc((var(--padding-left-right) - var(--about-me-margin-left)) * var(--author-name-photo-scale));
+    padding-right: calc(var(--padding-left-right) * var(--author-name-photo-scale));
+
+    /* The left and right paddings have not been increased, so as to maintain enough width for the "about me" section, preventing its title from breaking into a new line. */
     /* The left and right paddings are made equal to each other, unlike in the design file where the right margin is wider than the left. */
 
     /* The following variables have been defined here, as they are needed for styles outside the "about me" section. */
@@ -649,9 +660,6 @@ div.project-image {
     --about-me-margin-left: calc(var(--about-me-margin-top) / 2.1);
 
     --author-name-photo-scale: 1.05;
-
-    padding-left: calc((var(--padding-left) - var(--about-me-margin-left)) * var(--author-name-photo-scale));
-    padding-right: calc(var(--padding-right) * var(--author-name-photo-scale));
   }
 
   #page-header, #page-header > * {
@@ -664,25 +672,24 @@ div.project-image {
     /* TODO: Find out the reason why floated elements have extra space between them and the text below. */
 
     float: left;
-    margin-right: calc(16px * var(--author-name-photo-scale) + 0.75ch);
-    margin-bottom: 16px;
+    margin-right: calc(1.6rem * var(--author-name-photo-scale) + 0.75ch);
+    margin-bottom: 0.5em;
 
     transform: scale(var(--author-name-photo-scale));
   }
 
   #author-name {
-    /* TODO: Find a better way to define the font size and the value of `top`. */
+    /* TODO: Prevent the author name from overflowing the viewport on larger user-preferred font sizes. */
 
     position: absolute;
-    top: -0.1em;
+    top: -5px;
     left: calc(100% - 1ch);
 
+    /* Without the following two rules, the element box becomes shorter than its text content and as wide as `div#author-name-and-photo`, which makes it harder to select other elements in developer tools. */
     width: max-content;
-    height: max(min-content, var(--about-me-margin-top));
+    height: min-content;
 
     padding: 0;
-
-    font-size: 2.5em;
   }
 
   #author-name > fit-text {
@@ -692,6 +699,11 @@ div.project-image {
 
   #about-me {
     width: 100%;
+
+    --padding-multiplier: 3;
+
+    padding-left: calc(var(--padding-multiplier) * var(--about-me-padding-left));
+    padding-right: calc(var(--padding-multiplier) * var(--about-me-padding-right));
 
     margin-top: var(--about-me-margin-top);
     margin-left: var(--about-me-margin-left);
@@ -708,6 +720,7 @@ div.project-image {
 }
 
 @media (600px <= width <= 654px) {
+  /* Use a smaller font size to avoid overflowing the viewport. */
   #author-name {
     font-size: 2.1em;
   }
@@ -738,7 +751,7 @@ div.project-image {
   }
 
   #page-header, #page-main, #page-footer > #contact-me > #section-text {
-    padding: 12px 16px;
+    padding: 12px 5%;
   }
 
   #page-header {
