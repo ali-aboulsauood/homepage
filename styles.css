@@ -367,8 +367,7 @@ html {
 body {
   display: grid;
 
-  /* TODO: Check if there is a better rule that achieves the same result. */
-  height: 100vh;
+  min-height: 100dvh;
 
   font-family: var(--body-font);
 
@@ -409,6 +408,9 @@ body > * {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* Makes the page header span the entire visual viewport height if its content height is less than or equal to the visual viewport height, and overflow the viewport otherwise. */
+  min-height: 100dvh;
 
   --author-name-and-photo-width: clamp(25rem, 35vw, 53rem);
 
