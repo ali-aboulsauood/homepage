@@ -114,6 +114,10 @@
   word-wrap: break-word;
 }
 
+.author-photo-credit {
+  line-height: 1.25;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -132,8 +136,8 @@
 }
 
 .inverted-color-scheme *::selection {
-  background-color: var(--brand-color-secondary);
-  color: var(--brand-color-primary);
+  background-color: var(--brand-color-secondary) !important;
+  color: var(--brand-color-primary) !important;
 }
 
 /* Since all `img` and `svg` elements are not rendered in inline layout (see below), they are not underlined along with link text. */
@@ -163,7 +167,7 @@ a.icon:focus-visible, a.icon-with-text:focus-visible {
 }
 
 .inverted-color-scheme a.icon:focus-visible, .inverted-color-scheme a.icon-with-text:focus-visible {
-  outline-color: var(--brand-color-secondary);
+  outline-color: var(--brand-color-secondary) !important;
 }
 
 a[target="_blank"] {
@@ -318,6 +322,10 @@ section > * {
   margin-bottom: var(--section-title-margin-bottom);
 }
 
+small {
+  display: block;
+}
+
 .author-links {
   display: flex;
   align-items: center;
@@ -379,8 +387,12 @@ body {
 }
 
 .inverted-color-scheme, .inverted-color-scheme * {
-  background-color: var(--brand-color-primary);
-  color: var(--brand-color-secondary);
+  background-color: var(--brand-color-primary) !important;
+  color: var(--brand-color-secondary) !important;
+}
+
+.inverted-color-scheme a:not(.icon, .icon-with-text) {
+  text-decoration: underline;
 }
 
 #author-name-and-photo, #page-header::before, #about-me, .project-card {
@@ -645,6 +657,10 @@ div.project-image {
   height: var(--author-communication-icon-width);
 }
 
+#contact-me .author-photo-credit {
+  text-align: center;
+}
+
 /* Tablet styles */
 @media (600px <= width < 1200px) {
   body > * {
@@ -730,6 +746,8 @@ div.project-image {
 
 @media (width < 600px) {
   .section-title {
+    --section-title-margin-bottom: 4px;
+
     text-align: center;
 
     margin-bottom: calc(var(--section-title-margin-bottom / 2));
