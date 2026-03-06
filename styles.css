@@ -421,9 +421,6 @@ body > * {
   justify-content: center;
   align-items: center;
 
-  /* Makes the page header span the entire visual viewport height if its content height is less than or equal to the visual viewport height, and overflow the viewport otherwise. */
-  min-height: 100dvh;
-
   --author-name-and-photo-width: clamp(25rem, 35vw, 53rem);
 
   position: relative;
@@ -723,6 +720,10 @@ div.project-image {
     margin-left: var(--about-me-margin-left);
   }
 
+  #about-me .section-title {
+    text-align: center;
+  }
+
   #about-me .section-footer {
     /* In the design file for the tablet layout, the header author links are hidden but their space in the layout still exists. */
     visibility: hidden;
@@ -777,6 +778,9 @@ div.project-image {
 
     --author-photo-aspect-ratio: var(--author-photo-aspect-ratio-w) / var(--author-photo-aspect-ratio-h);
     --author-photo-ratio: calc(var(--author-photo-aspect-ratio));
+
+    /* Makes the page header span the entire visual viewport height if its content height is less than or equal to the visual viewport height, and overflow the viewport otherwise. */
+    min-height: 100dvh;
   }
 
   #page-header::before {
@@ -818,9 +822,5 @@ div.project-image {
 
   .author-communication > * > svg {
     --author-communication-icon-width: 32px;
-  }
-
-  #about-me .section-title {
-    text-align: center;
   }
 }
