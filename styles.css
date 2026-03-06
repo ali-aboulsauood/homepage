@@ -505,6 +505,10 @@ body > * {
   margin-bottom: 0.5em;
 }
 
+#about-me .author-photo-credit {
+  margin-top: 1.5em;
+}
+
 #about-me .section-footer {
   margin-top: 54px;
 }
@@ -810,6 +814,10 @@ div.project-image {
     width: 100%;
 
     box-shadow: none;
+  }
+
+  #about-me .author-photo-credit {
+    margin-top: 0.25em;
   }
 
   #about-me .section-footer {
