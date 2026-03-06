@@ -657,10 +657,6 @@ div.project-image {
   height: var(--author-communication-icon-width);
 }
 
-#contact-me .author-photo-credit {
-  text-align: center;
-}
-
 /* Tablet styles */
 @media (600px <= width < 1200px) {
   body > * {
@@ -727,10 +723,6 @@ div.project-image {
     margin-left: var(--about-me-margin-left);
   }
 
-  #about-me .section-title {
-    text-align: center;
-  }
-
   #about-me .section-footer {
     /* In the design file for the tablet layout, the header author links are hidden but their space in the layout still exists. */
     visibility: hidden;
@@ -778,7 +770,7 @@ div.project-image {
     display: flex;
     flex-direction: column;
 
-    row-gap: 24px;
+    row-gap: 16px;
 
     --author-photo-aspect-ratio-w: 5;
     --author-photo-aspect-ratio-h: 8;
@@ -817,7 +809,7 @@ div.project-image {
   }
 
   #about-me .section-footer {
-    margin-top: 16px;
+    margin-top: 12px;
   }
 
   #contact-me .section-image {
@@ -826,5 +818,9 @@ div.project-image {
 
   .author-communication > * > svg {
     --author-communication-icon-width: 32px;
+  }
+
+  #about-me .section-title {
+    text-align: center;
   }
 }
