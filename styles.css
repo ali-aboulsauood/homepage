@@ -90,8 +90,10 @@
   --brand-color-primary: #0891b2;
   --brand-color-secondary: #ffffff;
 
-  /* A darker version of the brand color, used for text to ensure adequate contrast according to WCAG conformance level AA. */
-  --brand-color-primary-text: #0881a0;
+  /* The following two variables are alternatives the previous two, used to ensure a color contrast of at least 4.5 (according to WCAG Conformance Level AA) */
+
+  --brand-color-primary-alt: #0881a0;
+  --brand-color-secondary-alt: #1c1c1c;
 
   --text-color-display: #060b04;
   --text-color-body: #575655;
@@ -134,13 +136,13 @@
 }
 
 *::selection {
-  background-color: var(--brand-color-primary);
+  background-color: var(--brand-color-primary-alt);
   color: var(--brand-color-secondary);
 }
 
 .inverted-color-scheme *::selection {
   background-color: var(--brand-color-secondary) !important;
-  color: var(--brand-color-primary-text) !important;
+  color: var(--brand-color-primary-alt) !important;
 }
 
 /* Since all `img` and `svg` elements are not rendered in inline layout (see below), they are not underlined along with link text. */
@@ -150,7 +152,7 @@ a {
 }
 
 a:not(:is(.icon, .icon-with-text)) {
-  color: var(--brand-color-primary-text);
+  color: var(--brand-color-primary-alt);
 }
 
 a.icon, a.icon-with-text {
@@ -165,12 +167,12 @@ a:hover, a:not(:is(.icon, .icon-with-text)):focus-visible {
 a.icon:focus-visible, a.icon-with-text:focus-visible {
   /* TODO: Test whether using `rem` is more suitable than using `px` for this ruleset. */
 
-  outline: 0.2rem solid var(--brand-color-primary-text);
+  outline: 0.2rem solid var(--brand-color-primary-alt);
   outline-offset: 0.2rem;
 }
 
 .inverted-color-scheme a.icon:focus-visible, .inverted-color-scheme a.icon-with-text:focus-visible {
-  outline-color: var(--brand-color-secondary) !important;
+  outline-color: var(--brand-color-secondary-alt) !important;
 }
 
 a[target="_blank"] {
@@ -195,7 +197,7 @@ a[target="_blank"] svg[aria-label="opens in a new tab"] {
   text-decoration: underline;
 
   background-color: transparent;
-  color: var(--brand-color-primary-text);
+  color: var(--brand-color-primary-alt);
 
   cursor: pointer;
 }
@@ -223,7 +225,7 @@ b {
 }
 
 b.colored {
-  color: var(--brand-color-primary-text);
+  color: var(--brand-color-primary-alt);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -391,7 +393,7 @@ body {
 
 .inverted-color-scheme, .inverted-color-scheme * {
   background-color: var(--brand-color-primary) !important;
-  color: var(--brand-color-secondary) !important;
+  color: var(--brand-color-secondary-alt) !important;
 }
 
 .inverted-color-scheme a:not(.icon, .icon-with-text) {
