@@ -598,10 +598,27 @@ div.project-image {
   color: var(--text-color-display);
 }
 
-.project-links > * > * {
+.project-links > * > *, .in-progress > svg {
   aspect-ratio: 1 / 1;
   width: 1.25em;
   height: auto;
+}
+
+.in-progress {
+  display: flex;
+  align-items: center;
+
+  gap: 0.6rem;
+
+  padding: 0px 6px;
+
+  max-height: 100%;
+
+  /* Ensures higher color contrast. */
+  font-weight: bold;
+
+  background-color: var(--brand-color-primary-alt);
+  color: var(--brand-color-secondary);
 }
 
 .project-description {
