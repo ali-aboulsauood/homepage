@@ -717,14 +717,39 @@
         sortMethodButtonCaptionWords[lastWordIndex] = lastWord;
 
         sortMethodButton.textContent = sortMethodButtonCaptionWords.join(" ");
-      }
+      };
 
       sortMethodButton.addEventListener('click', () => {
         projectCards.reverse();
         projectCardsContainer.replaceChildren(...projectCards);
 
         changeSortMethodButtonCaption();
-      })
+      });
+    </script>
+
+    <script>
+      const isElementInView = (element) => {
+        const elementRectangle = element.getBoundingClientRect();
+
+        return (elementRectangle.top >= 0);
+      };
+
+      const showProjectCardFrame = (projectCard) => {
+        projectCard.style.setProperty('--highlight-opacity', '1');
+      };
+
+      const showProjectCardFrameHandler = () => {
+        const latestProjectCard = document.querySelector('#latest-project');
+        const isLatestProjectCardInView = isElementInView(latestProjectCard);
+
+        if (isLatestProjectCardInView) {
+          showProjectCardFrame(latestProjectCard);
+
+          window.removeEventListener('scroll', showProjectCardFrameHandler);
+        };
+      };
+
+      window.addEventListener('scroll', showProjectCardFrameHandler);
     </script>
   </body>
 </html>

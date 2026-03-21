@@ -542,12 +542,22 @@ body > * {
 }
 
 .project-card {
+  --highlight-opacity: 0;
+
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
 #latest-project {
   position: relative;
+}
+
+#latest-project::before, #latest-project::after {
+  opacity: var(--highlight-opacity);
+
+  transition-duration: 0.55s;
+  transition-timing-function: ease-out;
+  transition-property: opacity;
 }
 
 #latest-project::before {
