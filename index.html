@@ -735,7 +735,10 @@
       };
 
       const showProjectCardFrame = (projectCard) => {
-        projectCard.style.setProperty('--highlight-opacity', '1');
+        projectCard.style.setProperty('--highlight-text-opacity', '1');
+        projectCard.style.setProperty('--highlight-border-opacity', '1');
+        
+        projectCard.style.setProperty('--highlight-transition-timing-function', 'ease-in');
       };
 
       const showProjectCardFrameHandler = () => {
@@ -746,6 +749,8 @@
           showProjectCardFrame(latestProjectCard);
 
           window.removeEventListener('scroll', showProjectCardFrameHandler);
+
+          window.setTimeout(() => latestProjectCard.style.setProperty('--highlight-border-opacity', '0'), 1000);
         };
       };
 

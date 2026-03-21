@@ -542,7 +542,10 @@ body > * {
 }
 
 .project-card {
-  --highlight-opacity: 0;
+  --highlight-text-opacity: 0;
+  --highlight-border-opacity: 0;
+
+  --highlight-transition-timing-function: ease-out;
 
   display: grid;
   grid-template-rows: auto 1fr;
@@ -553,10 +556,8 @@ body > * {
 }
 
 #latest-project::before, #latest-project::after {
-  opacity: var(--highlight-opacity);
-
   transition-duration: 0.55s;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--highlight-transition-timing-function);
   transition-property: opacity;
 }
 
@@ -580,6 +581,8 @@ body > * {
 
   background-color: var(--brand-color-primary-alt);
   color: var(--brand-color-secondary);
+
+  opacity: var(--highlight-text-opacity);
 }
 
 #latest-project::after {
@@ -593,7 +596,9 @@ body > * {
   top: 0;
   right: 0;
 
-  border: 3px solid var(--brand-color-primary-alt);
+  border: 4px solid var(--brand-color-primary-alt);
+
+  opacity: var(--highlight-border-opacity);
 }
 
 .project-image {
