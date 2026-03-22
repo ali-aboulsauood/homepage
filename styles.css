@@ -364,10 +364,15 @@ small {
   font-style: normal;
 }
 
-/* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
 html {
+  /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Enables smooth scrolling */
+
+  scroll-behavior: smooth;
 }
 
 /* TODO: Create animations. */
