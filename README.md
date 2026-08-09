@@ -59,6 +59,8 @@ The site is designed to closely resemble the [original design](https://github.co
 
 - The design files do not contain selected text, thus I chose the colors and background colors for selected text with accessibility in mind.
 
+- In the design files, the right padding is smaller than the left in desktop and tablet layouts, but my implementation makes them equal.
+
 - Interaction effects (e.g. hover and focus effects), transitions and animations were entirely decided by me.
 
 - Obviously there are slight differences in text, icon, and image sizes, as well as differences in spacing, alignment, and other properties, mainly due to the lack of any measurements in the original design, and sometimes for aesthetic purposes.
@@ -92,6 +94,10 @@ The site is designed to closely resemble the [original design](https://github.co
 
 My implementation uses the same fonts used in the [original design](https://github.com/alikamel-dev/homepage/tree/main/design): [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) for heading text and [Roboto](https://fonts.google.com/specimen/Roboto) for regular text.
 
+Each of the aforementioned fonts has a fallback system font stack of its same typeface classification from [Modern Font Stacks](https://github.com/system-fonts/modern-font-stacks), allowing for instant rendering while fonts download with minimal flashes and layout shifts.
+
+Emojis use the [native system emoji font](https://github.com/system-fonts/modern-font-stacks#emoji-support).
+
 ### Colors
 
 My implementation uses the same colors used in the [original design](https://github.com/alikamel-dev/homepage/tree/main/design), except for some differences, most of which have been documented [above](#differences-from-the-original-design).
@@ -106,6 +112,17 @@ The following are the colors I used for the design of the site. Each hexadecimal
 | **Alternate secondary color**: Used instead of the secondary color in footer to ensure adequate color contrast.                 | [`#1c1c1c`](https://colorhexa.com/1c1c1c) | `--secondary-color-alt` |
 | **Heading text color**: Used for headings, except the first-level heading containing the author name. Also used for icon links. | [`#060b04`](https://colorhexa.com/060b04) | `--text-color-display`        |
 | **Regular text color**: Used for regular text, with exceptions listed below.                                                    | [`#575655`](https://colorhexa.com/575655) | `--text-color-body`           |
+
+The original design uses an additional set of colors as the background colors for project screenshot placeholders. The design files do not use these colors in any particular order, so I assumed they are randomly assigned on page load. My implementation uses JavaScript to accomplish this.
+
+- [`#9e1c1c`](https://colorhex.com/9e1c1c)
+- [`#7c75ca`](https://colorhex.com/7c75ca)
+- [`#5e8f4d`](https://colorhex.com/5e8f4d)
+- [`#c363b4`](https://colorhex.com/c363b4)
+- [`#d88f39`](https://colorhex.com/d88f39)
+- [`#4ba2d2`](https://colorhex.com/4ba2d2)
+- [`#ca7599`](https://colorhex.com/ca7599)
+- [`#4692d9`](https://colorhex.com/4692d9)
 
 #### Additional notes
 
