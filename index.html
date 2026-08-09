@@ -264,13 +264,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -312,14 +305,7 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-              <span class="project-image-text">
-                <fit-text>
-                  <span class="fit-text-wrapper">
-                    <span>screenshot</span> <span>of project</span>
-                  </span>
-                </fit-text>
-              </span>
-          </div>
+            </div>
           </article>
 
           <article class="project-card" aria-label="latest">
@@ -352,13 +338,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-              <span class="project-image-text">
-                <fit-text>
-                  <span class="fit-text-wrapper">
-                    <span>screenshot</span> <span>of project</span>
-                  </span>
-                </fit-text>
-              </span>
             </div>
           </article>
 
@@ -390,13 +369,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -430,13 +402,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -468,13 +433,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -506,13 +464,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -544,13 +495,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -582,13 +526,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -620,13 +557,6 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
 
@@ -660,17 +590,8 @@
             </div>
 
             <div class="project-image-container" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
             </div>
           </article>
-
-
         </div>
       </section>
     </main>
@@ -768,7 +689,7 @@
       </section>
     </footer>
 
-    <!-- applies a random color to each project image placeholder from the colors used for project image placeholders in the three design files. -->
+    <!-- applies a random color to each project image placeholder from the colors used for project image placeholders in the three design files, and adds placeholder text to it. -->
     <script>
       const projectCardsContainer = document.querySelector('#my-work > .section-body')
 
@@ -797,7 +718,21 @@
       };
 
       projectCards.forEach(card => {
-        const projectImagePlaceholder = card.querySelector('.project-image-container');
+        const projectImagePlaceholder = card.querySelector('.project-image-container')
+
+        if (projectImagePlaceholder.children.length === 0) {
+          projectImagePlaceholder.innerHTML =
+          `
+          <span class="project-image-text">
+            <fit-text>
+              <span class="fit-text-wrapper">
+                <span>screenshot</span> <span>of project</span>
+              </span>
+            </fit-text>
+          </span>
+          `
+        }
+
         const inProgressNote = card.querySelector('.in-progress');
 
         let usedColor = null;
