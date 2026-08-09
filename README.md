@@ -41,7 +41,7 @@ Currently, there are two unexpected but minor bugs that occur on resizing the br
 > If you have any kind of motion sensitivies, you can still safely view the site as long as [animations are disabled in your operating system](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion#user_preferences). Motion-based animations that may trigger discomfort, as well as smooth scrolling, are automatically disabled based on the operating system setting.
 
 > [!TIP]
-> If you encounter an issue with the site, try installing the latest version of one of the aforementioned web browsers. If that does not work, feel free to [create an issue](https://github.com/alikamel-dev/homepage/issues/new) or solve it and [create a pull request](https://github.com/alikamel-dev/homepage/compare).
+> If you encounter an issue with the site, try installing the latest version of one of the aforementioned web browsers. If that does not work, feel free to [create an issue](https://github.com/alikamel-dev/homepage/issues/new) or solve it and [create a pull request](https://github.com/alikamel-dev/homepage/compare). Note that some browser extensions, such as [Web Highlights](https://chromewebstore.google.com/detail/web-highlights-pdf-web-hi/hldjnlbobkdkghfidgoecgmklcemanhm?pli=1) may alter the appearance of site.
 
 ## Design
 
