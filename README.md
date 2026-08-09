@@ -106,10 +106,10 @@ The following are the colors I used for the design of the site. Each hexadecimal
 
 | Color                                                                                                                           | Hexadecimal color value                   | CSS Variable                  |
 |---------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|-------------------------------|
-| **Primary color**: Background color for header decoration and footer.                                                           | [`#0891b2`](https://colorhexa.com/0891b2) | `--primary-color`       |
-| **Secondary color**: Background color for main content.                                                                         | [`#ffffff`](https://colorhexa.com/ffffff) | `--secondary-color`     |
-| **Alternate primary color**: Used instead of the primary color in some areas to ensure adequate color contrast.                 | [`#0881a0`](https://colorhexa.com/0881a0) | `--primary-color-alt`   |
-| **Alternate secondary color**: Used instead of the secondary color in footer to ensure adequate color contrast.                 | [`#1c1c1c`](https://colorhexa.com/1c1c1c) | `--secondary-color-alt` |
+| **Primary color**: Background color for header decoration and footer.                                                           | [`#0891b2`](https://colorhexa.com/0891b2) | `--brand-color-primary`       |
+| **Secondary color**: Background color for main content.                                                                         | [`#ffffff`](https://colorhexa.com/ffffff) | `--brand-color-secondary`     |
+| **Alternate primary color**: Used instead of the primary color in some areas to ensure adequate color contrast.                 | [`#0881a0`](https://colorhexa.com/0881a0) | `--brand-color-primary-alt`   |
+| **Alternate secondary color**: Used instead of the secondary color in footer to ensure adequate color contrast.                 | [`#1c1c1c`](https://colorhexa.com/1c1c1c) | `--brand-color-secondary-alt` |
 | **Heading text color**: Used for headings, except the first-level heading containing the author name. Also used for icon links. | [`#060b04`](https://colorhexa.com/060b04) | `--text-color-display`        |
 | **Regular text color**: Used for regular text, with exceptions listed below.                                                    | [`#575655`](https://colorhexa.com/575655) | `--text-color-body`           |
 

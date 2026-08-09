@@ -87,13 +87,13 @@
 
   /* (2) Colors */
   
-  --primary-color: #0891b2;
-  --secondary-color: #ffffff;
+  --brand-color-primary: #0891b2;
+  --brand-color-secondary: #ffffff;
 
   /* Alternative primary and secondary colors are used to when the primary and secondary colors cannot achieve a color contrast of at least 4.5 (according to WCAG Conformance Level AA). */
 
-  --primary-color-alt: #0881a0;
-  --secondary-color-alt: #1c1c1c;
+  --brand-color-primary-alt: #0881a0;
+  --brand-color-secondary-alt: #1c1c1c;
 
   --text-color-display: #060b04;
   --text-color-body: #575655;
@@ -138,13 +138,13 @@
 }
 
 *::selection {
-  background-color: var(--primary-color-alt);
-  color: var(--secondary-color);
+  background-color: var(--brand-color-primary-alt);
+  color: var(--brand-color-secondary);
 }
 
 .inverted-color-scheme *::selection {
-  background-color: var(--secondary-color);
-  color: var(--primary-color-alt);
+  background-color: var(--brand-color-secondary);
+  color: var(--brand-color-primary-alt);
 }
 
 /* Since all `img` and `svg` elements are not displayed as inline elements (see below), they are not underlined along with link text. */
@@ -154,7 +154,7 @@ a {
 }
 
 a:not(.icon, .icon-with-text) {
-  color: var(--primary-color-alt);
+  color: var(--brand-color-primary-alt);
 }
 
 a:hover, a:not(.icon, .icon-with-text):focus-visible {
@@ -186,12 +186,12 @@ a.icon:hover, a.icon:focus-visible {
 }
 
 .inverted-color-scheme a.icon:hover, .inverted-color-scheme a.icon:focus-visible {
-  color: var(--secondary-color-alt);
+  color: var(--brand-color-secondary-alt);
   outline-color: inherit;
 }
 
 a.icon:focus-visible, a.icon-with-text:focus-visible {
-  outline: 2px solid var(--original-color, var(--primary-color-alt));
+  outline: 2px solid var(--original-color, var(--brand-color-primary-alt));
   outline-offset: 4px;
 }
 
@@ -221,7 +221,7 @@ a[target="_blank"] svg[aria-label="opens in a new tab"] {
   text-decoration: underline;
 
   background-color: transparent;
-  color: var(--primary-color-alt);
+  color: var(--brand-color-primary-alt);
 
   cursor: pointer;
 }
@@ -249,7 +249,7 @@ b {
 }
 
 b.colored {
-  color: var(--primary-color-alt);
+  color: var(--brand-color-primary-alt);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -328,7 +328,7 @@ section {
   justify-content: center;
   align-items: start;
 
-  background-color: var(--secondary-color);
+  background-color: var(--brand-color-secondary);
 
   padding-bottom: 16px;
 
@@ -402,13 +402,13 @@ body {
 
   font-size: clamp(1.6rem, calc(0.85rem + 1.5vw), 2.25rem);
 
-  background-color: var(--secondary-color);
+  background-color: var(--brand-color-secondary);
   color: var(--text-color-body);
 }
 
 .inverted-color-scheme, .inverted-color-scheme > *, .inverted-color-scheme .underlined {
-  background-color: var(--primary-color);
-  color: var(--secondary-color-alt);
+  background-color: var(--brand-color-primary);
+  color: var(--brand-color-secondary-alt);
 }
 
 .inverted-color-scheme * {
@@ -472,7 +472,7 @@ body > * {
   width: 100%;
   height: 85%;
 
-  background-color: var(--primary-color);
+  background-color: var(--brand-color-primary);
 
   transform-origin: bottom left;
   transform: skewY(-15deg);
@@ -494,7 +494,7 @@ body > * {
 
   width: 100%;
 
-  color: var(--secondary-color);
+  color: var(--brand-color-secondary);
 
   text-align: center;
 
@@ -617,8 +617,8 @@ body > * {
   -webkit-user-select: none;
   user-select: none;
 
-  background-color: var(--primary-color-alt);
-  color: var(--secondary-color);
+  background-color: var(--brand-color-primary-alt);
+  color: var(--brand-color-secondary);
 }
 
 .highlighted#latest-project .top-left-tag {
@@ -642,7 +642,7 @@ body > * {
   top: 0;
   right: 0;
 
-  border: 0.4rem solid var(--primary-color-alt);
+  border: 0.4rem solid var(--brand-color-primary-alt);
 
   opacity: var(--highlight-border-opacity);
 
@@ -660,8 +660,8 @@ body > * {
 
 div.project-image {
   /* Fallback background color in case loading of the script for assigning random colors fails or is delayed. */
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--brand-color-primary);
+  color: var(--brand-color-secondary);
 
   font-family: var(--display-font);
 
