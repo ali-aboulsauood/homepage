@@ -659,6 +659,14 @@ body > * {
   /* Fallback background color in case loading of the script for assigning random colors fails or is delayed. */
   background-color: var(--brand-color-primary);
   color: var(--brand-color-secondary);
+
+  container-type: inline-size;
+}
+
+.project-image-container > span {
+  font-size: 20cqw;
+
+  text-transform: lowercase;
 }
 
 .project-image-container:not(:has(.project-image)) {
