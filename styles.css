@@ -116,7 +116,6 @@
 /* NOTE: Some of the following style rules and rulesets are based on Josh W. Comeau's custom CSS reset — refer to https://www.joshwcomeau.com/css/custom-css-reset */
 
 * {
-  /* TODO: Use a suitable value for `line-height` for headings. */
   line-height: 1.5;
 
   /* `word-wrap` has wider browser support than its newer synonym `overflow-wrap` */
@@ -193,10 +192,8 @@ a.icon:hover, a.icon:focus-visible {
 }
 
 a.icon:focus-visible, a.icon-with-text:focus-visible {
-  /* TODO: Test whether using `rem` is more suitable than using `px` for this ruleset. */
-
-  outline: 0.2rem solid var(--original-color, var(--brand-color-primary-alt));
-  outline-offset: 0.4rem;
+  outline: 2px solid var(--original-color, var(--brand-color-primary-alt));
+  outline-offset: 4px;
 }
 
 a.icon-with-text:focus-visible {
@@ -276,15 +273,12 @@ h3 {
   font-size: 1.15em;
 }
 
-/* TODO: Define `font-size` value for `h4`, `h5` and `h6` elements. */
-
 /* `max-inline-size` is used here to control the maximum line lengths of paragraphs */
 
 p {
   font-family: var(--body-font);
   color: var(--text-color-body);
 
-  /* TODO: Change the value of this property to `60ch` if this can be accomplished with the same padding as in the design file. */
   max-inline-size: 75ch;
 }
 
@@ -326,8 +320,6 @@ picture {
   */
 
   display: contents;
-
-  /* TODO: Address any accessibility issues caused by `display: contents;` */
 }
 
 button, input, select, textarea {
@@ -368,8 +360,6 @@ small {
 
   gap: calc(var(--author-link-width) / 1.5);
 }
-
-/* TODO: Make author links scale with the viewport or the font size of the parent. */
 
 .author-links img, .author-links svg {
   width: var(--author-link-width);
@@ -513,7 +503,6 @@ body > * {
 
   text-align: center;
 
-  /* TODO: Reduce the left and right padding of the author name in the mobile layout. */
   --author-name-padding-left-right: 0.5ch;
 
   padding: 0 var(--author-name-padding-left-right);
@@ -536,10 +525,7 @@ body > * {
   object-fit: cover;
 }
 
-/* TODO: Prevent the "about me" section from having a greater height than the header image. */
-
 #about-me {
-
   /* Multiplying a unitless value by a percentage resolves to a percentage value, which is then computed to the corresponding pixel value. */
   --about-me-padding-left: 2%;
   --about-me-padding-right: calc(1.25 * var(--about-me-padding-left));
@@ -822,9 +808,6 @@ div.project-image {
   }
 
   #author-name-and-photo {
-    /* TODO: Find out the reason why text in the "about me" section is inside the margin by about `0.75ch`. */
-    /* TODO: Find out the reason why floated elements have extra space between them and the text below. */
-
     float: left;
     margin-right: calc(1.6rem * var(--author-name-photo-scale) + 0.75ch);
     margin-bottom: 0.5em;
@@ -833,8 +816,6 @@ div.project-image {
   }
 
   #author-name {
-    /* TODO: Prevent the author name from overflowing the viewport on larger user-preferred font sizes. */
-
     position: absolute;
     top: -5px;
     left: calc(100% - 1ch);
@@ -985,12 +966,6 @@ div.project-image {
 }
 
 /* Styles Motion-based animations and their alternatives for users who prefer reduced motion */
-
-/* 
-TODOs:
-- Use more suitable easing functions, especially for the grow animation.
-- Understand why the starting animation is played when changing viewport width to tablet layout, even though it is not when changing viewport size to desktop and mobile layouts.
-*/
 
 :root {
   /* CSS Variables for motion-based animations and their alternatives */
