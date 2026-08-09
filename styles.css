@@ -1,8 +1,8 @@
-/* NOTE: Features tagged as Newly available or Limited availability in Baseline are indicated. Find all instances of "Baseline" in your text editor to see them. */
+/* NOTE: Features tagged as Baseline: Newly available or Baseline: Limited availability are indicated. Find all instances of "Baseline" in your text editor to see them. */
 
 /* Fonts */
 
-/* Playfair Display Regular */
+/* Playfair Display: Regular */
 @font-face {
   font-family: 'Playfair Display';
 
@@ -54,7 +54,7 @@
   font-display: swap;
 }
 
-/* Roboto Bold: Italic */
+/* Roboto: Bold Italic */
 @font-face {
   font-family: 'Roboto';
   src:  local('Roboto Bold Italic'), local('Roboto-BoldItalic'),
@@ -69,15 +69,15 @@
 :root {
   /* (1) Fonts */
 
-  /* (1 - A) System font stacks */
+  /* (1 - A) System font stacks — from Modern Font Stacks https://github.com/system-fonts/modern-font-stacks */
 
-  /* Didone system font stack — see notes at https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#didone */
+  /* Didone system font stack for Playfair Display */
   --display-system-font-stack: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
 
-  /* Neo-Grotesque system font stack — see notes at https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#neo-grotesque */
+  /* Neo-Grotesque system font stack for Roboto */
   --body-system-font-stack: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 
-  /* Native emoji support system font stack — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#emoji-support */
+  /* System font stack for native emoji support */
   --emoji-system-font-stack: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   /* (1 - B) Page fonts */
@@ -87,13 +87,13 @@
 
   /* (2) Colors */
   
-  --brand-color-primary: #0891b2;
-  --brand-color-secondary: #ffffff;
+  --primary-color: #0891b2;
+  --secondary-color: #ffffff;
 
-  /* The following two variables are alternatives the previous two, used to ensure a color contrast of at least 4.5 (according to WCAG Conformance Level AA) */
+  /* Alternative primary and secondary colors are used to when the primary and secondary colors cannot achieve a color contrast of at least 4.5 (according to WCAG Conformance Level AA). */
 
-  --brand-color-primary-alt: #0881a0;
-  --brand-color-secondary-alt: #1c1c1c;
+  --primary-color-alt: #0881a0;
+  --secondary-color-alt: #1c1c1c;
 
   --text-color-display: #060b04;
   --text-color-body: #575655;
@@ -106,19 +106,18 @@
   /* Makes the value of `1rem` equal to `10px`, without overriding the user's preferred base font size. */
   font-size: 62.5%;
 
-  /* NOTE: Styles related to complex animations are located at the end of the file, including global variables related to them. */
+  /* NOTE: Variables and Styles related to complex animations are located separately at the end of the file. */
 }
 
 /* NOTE: Transitions are intended to be non-problematic for users with motion sensitivities and are thus not entirely disabled even for `prefers-reduced-motion: reduce`. Problematic transitions should be individually handled. */
 
 /* (A) General styles */
 
-/* NOTE: Some of the following style rules and rulesets are based on Josh W. Comeau's custom CSS reset — refer to https://www.joshwcomeau.com/css/custom-css-reset */
+/* NOTE: Some of the following style rules and rulesets are based on Josh W. Comeau's custom CSS reset — refer to https://www.joshwcomeau.com/css/custom-css-reset. */
 
 * {
   line-height: 1.5;
 
-  /* `word-wrap` has wider browser support than its newer synonym `overflow-wrap` */
   word-wrap: break-word;
 }
 
@@ -139,23 +138,23 @@
 }
 
 *::selection {
-  background-color: var(--brand-color-primary-alt);
-  color: var(--brand-color-secondary);
+  background-color: var(--primary-color-alt);
+  color: var(--secondary-color);
 }
 
 .inverted-color-scheme *::selection {
-  background-color: var(--brand-color-secondary);
-  color: var(--brand-color-primary-alt);
+  background-color: var(--secondary-color);
+  color: var(--primary-color-alt);
 }
 
-/* Since all `img` and `svg` elements are not rendered in inline layout (see below), they are not underlined along with link text. */
+/* Since all `img` and `svg` elements are not displayed as inline elements (see below), they are not underlined along with link text. */
 
 a {
   text-decoration: none;
 }
 
 a:not(.icon, .icon-with-text) {
-  color: var(--brand-color-primary-alt);
+  color: var(--primary-color-alt);
 }
 
 a:hover, a:not(.icon, .icon-with-text):focus-visible {
@@ -187,12 +186,12 @@ a.icon:hover, a.icon:focus-visible {
 }
 
 .inverted-color-scheme a.icon:hover, .inverted-color-scheme a.icon:focus-visible {
-  color: var(--brand-color-secondary-alt);
+  color: var(--secondary-color-alt);
   outline-color: inherit;
 }
 
 a.icon:focus-visible, a.icon-with-text:focus-visible {
-  outline: 2px solid var(--original-color, var(--brand-color-primary-alt));
+  outline: 2px solid var(--original-color, var(--primary-color-alt));
   outline-offset: 4px;
 }
 
@@ -209,7 +208,7 @@ a[target="_blank"] {
 }
 
 a[target="_blank"] svg[aria-label="opens in a new tab"] {
-  /* An SVG with a width of `1em` looks appropriately sized relative to the link text at any given viewport width. */
+  /* An SVG with a width of `1em` happens to look appropriately sized relative to the link text at any given viewport width. */
   width: 1em;
 }
 
@@ -222,7 +221,7 @@ a[target="_blank"] svg[aria-label="opens in a new tab"] {
   text-decoration: underline;
 
   background-color: transparent;
-  color: var(--brand-color-primary-alt);
+  color: var(--primary-color-alt);
 
   cursor: pointer;
 }
@@ -242,7 +241,6 @@ abbr {
 }
 
 address {
-  /* Overrides the default value of `font-style` for `address` elements, that is, `italic` */
   font-style: normal;
 }
 
@@ -251,7 +249,7 @@ b {
 }
 
 b.colored {
-  color: var(--brand-color-primary-alt);
+  color: var(--primary-color-alt);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -259,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-color-display);
 }
 
-/* Typographic scale uses the `em` unit to ensure that the various typographic elements scale with the fluid body */
+/* Typographic scale uses the `em` unit to ensure that the various typographic elements scale with the fluid body font. */
 
 h1 {
   font-size: 2.5em;
@@ -273,7 +271,7 @@ h3 {
   font-size: 1.15em;
 }
 
-/* `max-inline-size` is used here to control the maximum line lengths of paragraphs */
+/* `max-inline-size` is used here to control the maximum line lengths of paragraphs. */
 
 p {
   font-family: var(--body-font);
@@ -292,17 +290,14 @@ article p {
   font-size: 1em;
 }
 
-/* `@supports` at-rule used to prevent Microsoft Edge DevTools extension for Visual Studio Code from giving warnings (LOL) */
-@supports (text-wrap: balance) and (text-wrap: pretty) {
-  /* Baseline 2024: Newly available */
+/* Baseline 2024: Newly available */
 
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
-  }
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
 
-  p {
-    text-wrap: pretty;
-  }
+p {
+  text-wrap: pretty;
 }
 
 img, canvas, picture, svg, video {
@@ -333,7 +328,7 @@ section {
   justify-content: center;
   align-items: start;
 
-  background-color: var(--brand-color-secondary);
+  background-color: var(--secondary-color);
 
   padding-bottom: 16px;
 
@@ -383,12 +378,12 @@ small {
 }
 
 html {
-  /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing */
+  /* Renders text with anti-aliasing — refer to https://github.com/system-fonts/modern-font-stacks?tab=readme-ov-file#anti-aliasing. */
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Enables smooth scrolling */
+  /* Enables smooth scrolling. It is disabled later in the stylesheet for users who prefer reduced motion. */
   scroll-behavior: smooth;
 }
 
@@ -405,16 +400,15 @@ body {
 
   font-family: var(--body-font);
 
-  /* Refer to: https://web.dev/learn/design/typography#clamping_text */
   font-size: clamp(1.6rem, calc(0.85rem + 1.5vw), 2.25rem);
 
-  background-color: var(--brand-color-secondary);
+  background-color: var(--secondary-color);
   color: var(--text-color-body);
 }
 
 .inverted-color-scheme, .inverted-color-scheme > *, .inverted-color-scheme .underlined {
-  background-color: var(--brand-color-primary);
-  color: var(--brand-color-secondary-alt);
+  background-color: var(--primary-color);
+  color: var(--secondary-color-alt);
 }
 
 .inverted-color-scheme * {
@@ -460,7 +454,8 @@ body > * {
   position: relative;
   isolation: isolate;
 
-  height: 100dvh;
+  /* Makes the page header span the entire visual viewport height if its content height is less than or equal to the visual viewport height, and overflow the viewport otherwise. */
+  min-height: 100dvh;
 
   padding-top: 0;
 }
@@ -477,7 +472,7 @@ body > * {
   width: 100%;
   height: 85%;
 
-  background-color: var(--brand-color-primary);
+  background-color: var(--primary-color);
 
   transform-origin: bottom left;
   transform: skewY(-15deg);
@@ -499,7 +494,7 @@ body > * {
 
   width: 100%;
 
-  color: var(--brand-color-secondary);
+  color: var(--secondary-color);
 
   text-align: center;
 
@@ -507,7 +502,7 @@ body > * {
 
   padding: 0 var(--author-name-padding-left-right);
 
-  /* Baseline: Limited availability */
+  /* Make user select the entire author name by clicking it once. (Baseline: Limited availability) */
   -webkit-user-select: all;
   user-select: all;
 }
@@ -601,7 +596,7 @@ body > * {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* The fade-in effect of the highlight can trigger adverse effects in some users. */
+  /* The fade-in effect of the highlight can trigger adverse effects in users with motion sensitivities. */
   .highlighted .top-left-tag, .highlighted::after {
     transition: none !important;
   }
@@ -622,8 +617,8 @@ body > * {
   -webkit-user-select: none;
   user-select: none;
 
-  background-color: var(--brand-color-primary-alt);
-  color: var(--brand-color-secondary);
+  background-color: var(--primary-color-alt);
+  color: var(--secondary-color);
 }
 
 .highlighted#latest-project .top-left-tag {
@@ -647,7 +642,7 @@ body > * {
   top: 0;
   right: 0;
 
-  border: 0.4rem solid var(--brand-color-primary-alt);
+  border: 0.4rem solid var(--primary-color-alt);
 
   opacity: var(--highlight-border-opacity);
 
@@ -665,12 +660,11 @@ body > * {
 
 div.project-image {
   /* Fallback background color in case loading of the script for assigning random colors fails or is delayed. */
-  background-color: var(--brand-color-primary);
-  color: var(--brand-color-secondary);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 
   font-family: var(--display-font);
 
-  /* Setting `display` to `flex` or `grid` caus */
   text-align: center;
   align-content: center;
 
@@ -681,7 +675,7 @@ div.project-image {
   display: flex;
   flex-direction: column;
 
-  /* Baseline: Limited Availability */
+  /* Make user select the entire text by clicking on it once. (Baseline: Limited Availability) */
   -webkit-user-select: none;
   user-select: none;
 }
@@ -769,7 +763,7 @@ div.project-image {
 
   flex-basis: var(--author-communication-icon-width);
 
-  /* Prevents shrinking of the email icon to zero width. */
+  /* For some reason, the email icon shrinks down to zero width unless the following rule is applied. */
   min-width: var(--author-communication-icon-width);
   
   height: var(--author-communication-icon-width);
@@ -788,7 +782,6 @@ div.project-image {
     /* The left and right paddings have not been increased, so as to maintain enough width for the "about me" section, preventing its title from breaking into a new line. */
     /* The left and right paddings are made equal to each other, unlike in the design file where the right margin is wider than the left. */
 
-    /* The following variables have been defined here, as they are needed for styles outside the "about me" section. */
     --about-me-margin-top: 3em;
     --about-me-margin-left: calc(var(--about-me-margin-top) / 2.1);
 
@@ -968,10 +961,9 @@ div.project-image {
 /* Styles Motion-based animations and their alternatives for users who prefer reduced motion */
 
 :root {
-  /* CSS Variables for motion-based animations and their alternatives */
+  /* Variables */
 
   /* Fade-in */
-
   --fade-in: fade-in var(--fade-duration) ease-out;
 
   /* fade-out */
@@ -980,7 +972,6 @@ div.project-image {
   --fade-duration: 1s;
 
   /* Grow */
-
   --grow: grow var(--grow-duration) ease-out;
   --grow-duration: 1.5s;
 }
@@ -1015,7 +1006,6 @@ div.project-image {
 @keyframes grow {
   from {
     /* By default, scaling starts from zero scale and from the center of the element, with no fade-in effect. */
-
     transform: scale(var(--grow-start-scale-x, 0), var(--grow-start-scale-y, 0));
     transform-origin: var(--grow-origin-x, 50%) var(--grow-origin-y, 50%);
 
@@ -1153,7 +1143,7 @@ div.project-image {
 
     animation: var(--fade-in);
 
-    /* Ensure that the fade-in animation of the author name does not end before the grow animation of the author photo and the about me section. */
+    /* Ensure that the fade-in animation of the author name does not end before the grow animation of the author photo and the about me section does. */
     animation-duration: var(--grow-duration);
   }
 
@@ -1193,7 +1183,6 @@ div.project-image {
 
     animation-delay: var(--section-footer-animation-delay);
 
-    /* `animation-fill-mode: backwards` forces the rules in the `from` ruleset of the animation to apply to the element during the delay before the animation. */
     animation-fill-mode: backwards;
   }
 
