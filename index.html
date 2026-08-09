@@ -263,7 +263,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -311,15 +311,15 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
-            </div>
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+              <span class="project-image-text">
+                <fit-text>
+                  <span class="fit-text-wrapper">
+                    <span>screenshot</span> <span>of project</span>
+                  </span>
+                </fit-text>
+              </span>
+          </div>
           </article>
 
           <article class="project-card" aria-label="latest">
@@ -351,14 +351,14 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
-                <span class="project-image-text">
-                  <fit-text>
-                    <span class="fit-text-wrapper">
-                      <span>screenshot</span> <span>of project</span>
-                    </span>
-                  </fit-text>
-                </span>
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+              <span class="project-image-text">
+                <fit-text>
+                  <span class="fit-text-wrapper">
+                    <span>screenshot</span> <span>of project</span>
+                  </span>
+                </fit-text>
+              </span>
             </div>
           </article>
 
@@ -389,7 +389,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -429,7 +429,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -467,7 +467,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -505,7 +505,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -543,7 +543,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -581,7 +581,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -619,7 +619,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -659,7 +659,7 @@
               </div>
             </div>
 
-            <div class="project-image" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container" role="img" aria-label="Screenshot of project">
                 <span class="project-image-text">
                   <fit-text>
                     <span class="fit-text-wrapper">
@@ -797,7 +797,7 @@
       };
 
       projectCards.forEach(card => {
-        const projectImagePlaceholder = card.querySelector('.project-image');
+        const projectImagePlaceholder = card.querySelector('.project-image-container');
         const inProgressNote = card.querySelector('.in-progress');
 
         let usedColor = null;
