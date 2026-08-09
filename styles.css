@@ -861,7 +861,7 @@ div.project-image {
 
     text-align: center;
 
-    margin-bottom: calc(var(--section-title-margin-bottom / 2));
+    margin-bottom: calc(var(--section-title-margin-bottom) / 2);
   }
 
   #page-header .author-links, #page-footer .author-links {
@@ -874,7 +874,9 @@ div.project-image {
 
   #page-footer {
     padding: 0;
-    padding-top: 12px;
+
+    /* `12px` in the original design, but it is increased here for the sake of scroll-driven animations of mobile layout (to give a space for the section title to fade in from)*/
+    padding-top: 24px;
   }
 
   #contact-me {
@@ -1077,7 +1079,8 @@ div.project-image {
 #page-footer {
   view-timeline: --page-footer-timeline;
 
-  overflow: hidden;
+  /* Prevent the appearance of a horizontal scrollbar while the two children of the footer are translated outside the viewport. */
+  overflow-x: hidden;
 }
 
 #contact-me > .section-text, #contact-me #author-footer-photo {
@@ -1187,6 +1190,36 @@ div.project-image {
   }
 
   #about-me .author-photo-credit {
-    animation-delay: calc(var(--fade-duration) + var(--section-footer-animation-delay))
+    animation-delay: calc(var(--fade-duration) + var(--section-footer-animation-delay));
+  }
+
+  #page-footer {
+    /* Override the `overflow: hidden;` rule set in desktop and tablet layouts, which prevents the scroll-driven animations here from working. */
+    overflow: initial;
+  }
+
+  #page-footer :not(.animatable-unit) {
+    animation: none !important;
+  }
+
+  #page-footer .animatable-unit {
+    --fade-in-start-x: 0;
+    --fade-in-start-y: 1ch;
+
+    --fade-in-start-opacity: 0;
+
+    animation: fade-in linear;
+    animation-timeline: view();
+    animation-range: cover 0% contain 100%;
+
+    animation-fill-mode: both;
+  }
+
+  #page-footer .animatable-unit.section-title {
+    --fade-in-start-y: -1ch;
+  }
+
+  #page-footer .author-photo-credit.animatable-unit {
+    --fade-in-start-y: -1ch;
   }
 }
