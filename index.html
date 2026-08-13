@@ -59,6 +59,9 @@
     Refer to: https://fit-text.github.io/
     -->
     <script src="https://fit-text.github.io/element.min.js"></script>
+
+    <!-- File containing all scripts required for page functionality. Might split the script into multiple modules later. -->
+    <script src="script.js" defer></script>
   </head>
 
   <body>
@@ -263,7 +266,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -304,7 +307,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -337,7 +340,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -368,7 +371,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -401,7 +404,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -432,7 +435,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -463,7 +466,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -494,7 +497,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -525,7 +528,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -556,7 +559,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
 
@@ -589,7 +592,7 @@
               </div>
             </div>
 
-            <div class="project-image-container" role="img" aria-label="Screenshot of project">
+            <div class="project-image-container">
             </div>
           </article>
         </div>
@@ -689,125 +692,8 @@
       </section>
     </footer>
 
-    <!-- applies a random color to each project image placeholder from the colors used for project image placeholders in the three design files, and adds placeholder text to it. -->
-    <script>
-      const projectCardsContainer = document.querySelector('#my-work > .section-body')
-
-      const projectCards = Array.from(projectCardsContainer.querySelectorAll('.project-card'));
-
-      // The following colors have been picked from the three design files
-      const allColors = [ 
-        '#9e1c1c',
-        '#7c75ca',
-        '#5e8f4d',
-        '#c363b4',
-        '#d88f39',
-        '#4ba2d2',
-        '#ca7599',
-        '#4692d9',
-      ];
-      let unusedColors = [...allColors];
-
-      let lastUsedColorName = null;
-
-      const getRandomColor = () => {
-        const randomColorIndex = Math.floor(Math.random() * unusedColors.length);
-        const randomColor = unusedColors[randomColorIndex];
-
-        return Object.freeze({ colorName: randomColor, colorIndex: randomColorIndex });
-      };
-
-      projectCards.forEach(card => {
-        const projectImagePlaceholder = card.querySelector('.project-image-container')
-
-        if (projectImagePlaceholder.children.length === 0) {
-          projectImagePlaceholder.innerHTML =
-          `
-          <span class="project-image-placeholder-text">
-            Screenshot of project
-          </span>
-          `
-        }
-
-        const inProgressNote = card.querySelector('.in-progress');
-
-        let usedColor = null;
-
-        do {
-          if (unusedColors.length === 0)
-            unusedColors = [...allColors];
-
-          usedColor = getRandomColor();
-        } while (usedColor.colorName === lastUsedColorName);
-
-        unusedColors.splice(usedColor.colorIndex, 1)
-
-        if (projectImagePlaceholder)
-          projectImagePlaceholder.style.backgroundColor = usedColor.colorName;
-
-        if (inProgressNote)
-          inProgressNote.style.backgroundColor = usedColor.colorName;
-
-        lastUsedColorName = usedColor.colorName;
-      });
-    </script>
-
-    <!-- Script for sort method button functionality -->
-    <script>
-      const sortMethodButton = document.querySelector('#sort-button');
-      const sortMethod = document.querySelector('#sort-method');
-
-      const changeSortMethodButtonCaption = () => {
-        const sortMethodButtonCaptionWords = sortMethodButton.textContent.split(" ");
-        const lastWordIndex = sortMethodButtonCaptionWords.length - 1;
-
-        let lastWord = sortMethodButtonCaptionWords.at(-1);
-        lastWord = (lastWord === "earliest") ? "latest" : "earliest";
-        sortMethod.textContent = (lastWord === "earliest") ? "latest" : "earliest";
-
-        sortMethodButtonCaptionWords[lastWordIndex] = lastWord;
-
-        sortMethodButton.textContent = sortMethodButtonCaptionWords.join(" ");
-      };
-
-      sortMethodButton.addEventListener('click', () => {
-        projectCards.reverse();
-
-        projectCardsContainer.replaceChildren(...projectCards);
-
-        changeSortMethodButtonCaption();
-      });
-    </script>
-
     <!-- Script for triggering the highlight effect for latest project. -->
     <script>
-      const isElementInView = (element) => {
-        const elementRectangle = element.getBoundingClientRect();
-
-        return (elementRectangle.top >= 0);
-      };
-
-      const showProjectCardFrame = (projectCard) => {
-        projectCard.style.setProperty('--highlight-text-opacity', '1');
-        projectCard.style.setProperty('--highlight-border-opacity', '1');
-        
-        projectCard.style.setProperty('--highlight-transition-timing-function', 'ease-in');
-      };
-
-      const showProjectCardFrameHandler = () => {
-        const latestProjectCard = document.querySelector('#latest-project');
-        const isLatestProjectCardInView = isElementInView(latestProjectCard);
-
-        if (isLatestProjectCardInView) {
-          showProjectCardFrame(latestProjectCard);
-
-          window.removeEventListener('scroll', showProjectCardFrameHandler);
-
-          window.setTimeout(() => latestProjectCard.style.setProperty('--highlight-border-opacity', '0'), 1000);
-        };
-      };
-
-      window.addEventListener('scroll', showProjectCardFrameHandler);
     </script>
   </body>
 </html>
