@@ -26,6 +26,11 @@ const projectImagePlaceholderColors = [
   '#4692d9',
 ]
 
+const inProgressProjectImagePlaceholderText = [
+  'Coming soon',
+  'Stay tuned',
+]
+
 let unusedColors = [...projectImagePlaceholderColors];
 let lastUsedColorName = null;
 
@@ -36,6 +41,12 @@ const randomProjectImagePlaceholderColor = () => {
   return Object.freeze({ colorName: randomColor, colorIndex: randomColorIndex });
 }
 
+const randomInProgressProjectImagePlaceholderText = () => {
+  const randomTextIndex = Math.floor(Math.random() * inProgressProjectImagePlaceholderText.length);
+
+  return inProgressProjectImagePlaceholderText[randomTextIndex];
+}
+
 projectCards.forEach(card => {
   const projectImagePlaceholder = card.querySelector('.project-image-container');
 
@@ -43,7 +54,7 @@ projectCards.forEach(card => {
       projectImagePlaceholder.innerHTML =
       `
       <span class="project-image-placeholder-text">
-          Screenshot of project
+          ${card.classList.contains('in-progress-project') ? randomInProgressProjectImagePlaceholderText() : `Screenshot of project`}
       </span>
       `
 
