@@ -3,7 +3,7 @@
 // List of scripts used
 // --------------------
 // (0) Global variables used in multiple scripts
-// (1) Script to handle the text content, attributes, and colors of project image placeholders
+// (1) Script to handle the text content, attributes, tags, and colors of project image placeholders
 // (2) Script to handle sort method button functionality
 // (3) Script to handle highlighting the project card for the latest project
 
@@ -12,7 +12,7 @@
 const projectCardsContainer = document.querySelector('#my-work > .section-body');
 const projectCards = Array.from(projectCardsContainer.querySelectorAll('.project-card'));
 
-// (1) Script to handle the text content, attributes, and colors of project image placeholders
+// (1) Script to handle the text content, attributes, tags, and colors of project image placeholders
 
 // The following colors have been picked from the three design files
 const projectImagePlaceholderColors = [ 
@@ -41,6 +41,36 @@ const randomProjectImagePlaceholderColor = () => {
   return Object.freeze({ colorName: randomColor, colorIndex: randomColorIndex });
 }
 
+const createProjectCardTag = (textContent = ``, classList = [], attributes = {}) => {
+  const tag = document.createElement('span');
+  tag.textContent = textContent;
+
+  tag.classList.add(...classList);
+
+  for (const [attributeName, attributeValue] of Object.entries(attributes))
+    tag.setAttribute(attributeName, attributeValue);
+
+  return tag;
+}
+
+const appendProjectCardTag = (projectCard, projectTag) => {
+  projectCard.appendChild(projectTag.cloneNode(true));
+}
+
+const inProgressTag = createProjectCardTag(
+  'In progress',
+  [ 'top-left-tag' ],
+  { 'aria-label': 'This project is still in progress.' }
+);
+
+const latestTag = createProjectCardTag(
+  'Latest',
+  [ 'top-left-tag' ],
+  { 'id': 'latest-project-tag', 'aria-label': 'This is my latest project.' }
+);
+
+let wasLatestProjectFound = false;
+
 const randomInProgressProjectImagePlaceholderText = () => {
   const randomTextIndex = Math.floor(Math.random() * inProgressProjectImagePlaceholderText.length);
 
@@ -50,16 +80,39 @@ const randomInProgressProjectImagePlaceholderText = () => {
 projectCards.forEach(card => {
   const projectImagePlaceholder = card.querySelector('.project-image-container');
 
+  const isProjectTagged = 'tag' in card.dataset;
+
+  let [isProjectInProgress, isProjectLatest] = [false, false];
+
+  if (isProjectTagged) {
+    isProjectInProgress = (card.dataset.tag === 'in-progress');
+    isProjectLatest = wasLatestProjectFound ? false : (card.dataset.tag === 'latest');
+
+    if (isProjectLatest)
+      wasLatestProjectFound = true;
+  }
+
   if (projectImagePlaceholder.children.length === 0) {
       projectImagePlaceholder.innerHTML =
       `
       <span class="project-image-placeholder-text">
-          ${card.classList.contains('in-progress-project') ? randomInProgressProjectImagePlaceholderText() : `Screenshot of project`}
+          ${isProjectInProgress ? randomInProgressProjectImagePlaceholderText() : `Screenshot of project`}
       </span>
       `
 
       // Announce the non-presence of a screenshot to prevent confusion when an alternative text is expected and not announced.
       projectImagePlaceholder.setAttribute('aria-label', "No screenshot currently present");
+  }
+
+  if (isProjectTagged) {
+    const projectCardHeader = card.querySelector('.project-title-and-links');
+
+    if (isProjectInProgress)
+      appendProjectCardTag(card, inProgressTag);
+    else if (isProjectLatest) {
+      appendProjectCardTag(card, latestTag);
+      card.setAttribute('id', 'latest-project');
+    }
   }
 
   let usedColor = null;

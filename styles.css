@@ -593,11 +593,11 @@ body > * {
   row-gap: 0;
 }
 
-.highlighted {
+.project-card:has(.top-left-tag) {
   position: relative;
 }
 
-.highlighted .top-left-tag, .highlighted::after {
+.project-card .top-left-tag, .project-card:has(.top-left-tag)::after {
   transition-duration: 0.55s;
   transition-timing-function: var(--highlight-transition-timing-function);
   transition-property: opacity;
@@ -605,12 +605,12 @@ body > * {
 
 @media (prefers-reduced-motion: reduce) {
   /* The fade-in effect of the highlight can trigger adverse effects in users with motion sensitivities. */
-  .highlighted .top-left-tag, .highlighted::after {
+  .project-card .top-left-tag, .project-card:has(.top-left-tag)::after {
     transition: none !important;
   }
 }
 
-.highlighted .top-left-tag {
+.project-card .top-left-tag {
   content: '';
   text-transform: uppercase;
 
@@ -629,17 +629,11 @@ body > * {
   color: var(--brand-color-secondary);
 }
 
-.highlighted#latest-project .top-left-tag {
-  content: 'latest';
-
+#latest-project .top-left-tag {
   opacity: var(--highlight-text-opacity);
 }
 
-.highlighted.in-progress-project .top-left-tag {
-  content: 'in progress';
-}
-
-.highlighted#latest-project::after {
+#latest-project::after {
   content: '';
 
   display: block;
