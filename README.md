@@ -9,13 +9,13 @@ A responsive homepage — something you might find on a portfolio site of sorts.
 
 > [!NOTE]
 > **New features and fixes!** (ordered from most recent)
+> - Project screenshots (may show low quality on greater viewport widths, but I am going to try to solve this later)
 > - Scroll-driven animations for page sections, except header.
 > - Make visual viewport (visible part of the page in browser window) only contain page header on page load
 > - Page-load animations for header
 > 
 > **Features and fixes coming soon!** (ordered from first to be implemented)
-> 1. Project screenshots
-> 2. Scroll-triggered instead of Scroll-driven animations for "Contact me" section
+> 1. Scroll-triggered instead of Scroll-driven animations for "Contact me" section
 
 This is my final HTML/CSS project in the [Full Stack JavaScript](https://theodinproject.com/paths/full-stack-javascript) path of [The Odin Project (TOP)](https://theodinproject.com), created as a practice on [responsive design](https://theodinproject.com/paths/full-stack-javascript/courses/advanced-html-and-css#responsive-design), with an additional focus on accessibility on my part.
 
