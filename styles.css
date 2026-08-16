@@ -286,6 +286,16 @@ article p {
   font-size: 0.9em;
 }
 
+article small {
+  font-style: italic;
+}
+
+article p:has(small) {
+  display: grid;
+
+  gap: 0.25em;
+}
+
 #page-main > p {
   font-size: 1em;
 }
@@ -298,6 +308,10 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   text-wrap: pretty;
+}
+
+span.italic {
+  font-style: italic;
 }
 
 img, canvas, picture, svg, video {
